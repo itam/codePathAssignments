@@ -103,11 +103,14 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationViewController = segue.destination as? MovieDetailsViewController
-        
-        let movie = movies?[(self.tableView.indexPathForSelectedRow?.row)!]
+   
+        let indexPath = self.tableView.indexPathForSelectedRow
+        let movie = movies?[(indexPath?.row)!]
 
         destinationViewController?.movieData = movie
         destinationViewController?.movieImageUrl = createImageURL(movie?["poster_path"] as! String)
+        
+        self.tableView.deselectRow(at: indexPath!, animated:true)
     }
 
     /*

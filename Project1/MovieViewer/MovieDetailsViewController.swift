@@ -12,6 +12,7 @@ class MovieDetailsViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var posterView: UIImageView!
+    @IBOutlet weak var infoView: UIView!
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
@@ -21,17 +22,15 @@ class MovieDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let contentWidth = scrollView.bounds.width
-        let contentHeight = scrollView.bounds.height
         
-        scrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
+        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: infoView.frame.origin.y + infoView.frame.size.height)
         
         posterView.setImageWith(movieImageUrl!)
         titleLabel.text = movieData?["title"] as? String
         overviewLabel.text = movieData?["overview"] as? String
         
-        // Do any additional setup after loading the view.
+        titleLabel.sizeToFit()
+        overviewLabel.sizeToFit()
     }
 
     override func didReceiveMemoryWarning() {
