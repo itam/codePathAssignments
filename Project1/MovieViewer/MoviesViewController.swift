@@ -15,6 +15,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var tableView: UITableView!
     
     var movies: [NSDictionary]?
+    var movie: NSDictionary?
+    var movieImageUrl: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,19 +52,19 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
         
-        let movie = movies?[indexPath.row]
-        let title = movie?["title"] as? String
-        let overview = movie?["overview"] as? String
+        self.movie = movies?[indexPath.row]
+        let title = self.movie?["title"] as? String
+        let overview = self.movie?["overview"] as? String
         
         let baseUrl = "https://image.tmdb.org/t/p/w500"
-        let posterPath = movie?["poster_path"] as? String
+        let posterPath = self.movie?["poster_path"] as? String
         
-        let imageUrl = URL(string: baseUrl + posterPath!)
+        self.movieImageUrl = URL(string: baseUrl + posterPath!)
         
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
         
-        cell.posterView.setImageWith(imageUrl!)
+        cell.posterView.setImageWith(self.movieImageUrl!)
 
         return cell
     }
@@ -95,6 +97,13 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             }
         });
         task.resume()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationViewController = segue.destination as? MovieDetailsViewController
+
+        destinationViewController?.movieData = self.movie
+        destinationViewController?.movieImageUrl = self.movieImageUrl
     }
 
     /*
