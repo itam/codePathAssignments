@@ -1,7 +1,7 @@
 # Project 1 - *MovieViewer*
 **MovieViewer** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **3** hours spent in total
+Time spent: **4** hours spent in total
 
 ## User Stories
 
@@ -9,7 +9,7 @@ The following **required** functionality is completed:
 
 - [x] User can view a list of movies currently playing in theaters. Poster images load asynchronously.
 - [ ] User can view movie details by tapping on a cell.
-- [ ] User sees loading state while waiting for the API.
+- [x] User sees loading state while waiting for the API.
 - [ ] User sees an error message when there is a network error.
 - [x] User can pull to refresh the movie list.
 
