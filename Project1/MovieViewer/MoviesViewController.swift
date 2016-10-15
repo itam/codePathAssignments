@@ -8,6 +8,7 @@
 
 import UIKit
 import AFNetworking
+import MBProgressHUD
 
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -23,30 +24,11 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         let refreshControl = UIRefreshControl()
         
-        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action: #selector(makeApiRequest(_:)), for: UIControlEvents.valueChanged)
         
         tableView.insertSubview(refreshControl, at: 0)
         
-        let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = URL(string:"https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
-        let request = URLRequest(url: url!)
-        let session = URLSession(
-            configuration: URLSessionConfiguration.default,
-            delegate:nil,
-            delegateQueue:OperationQueue.main
-        )
-        
-        let task : URLSessionDataTask = session.dataTask(with: request,completionHandler: { (dataOrNil, response, error) in
-            if let data = dataOrNil {
-                if let responseDictionary = try! JSONSerialization.jsonObject(with: data, options:[]) as? NSDictionary {
-                    NSLog("response: \(responseDictionary)")
-                    
-                    self.movies = responseDictionary["results"] as? [NSDictionary]
-                    self.tableView.reloadData()
-                }
-            }
-        });
-        task.resume()
+        self.makeApiRequest(nil)
 
         // Do any additional setup after loading the view.
     }
@@ -85,7 +67,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
-    func refreshControlAction(_ refreshControl: UIRefreshControl) {
+    func makeApiRequest(_ refreshControl: UIRefreshControl?) {
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = URL(string:"https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
         let request = URLRequest(url: url!)
@@ -95,15 +77,20 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             delegateQueue:OperationQueue.main
         )
         
+        // Add progress spinner
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        
         let task : URLSessionDataTask = session.dataTask(with: request,completionHandler: { (dataOrNil, response, error) in
             if let data = dataOrNil {
                 if let responseDictionary = try! JSONSerialization.jsonObject(with: data, options:[]) as? NSDictionary {
-                    NSLog("response: \(responseDictionary)")
-                    
+
                     self.movies = responseDictionary["results"] as? [NSDictionary]
                     self.tableView.reloadData()
                     
-                    refreshControl.endRefreshing()
+                    // Hide progress spinner
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    
+                    refreshControl?.endRefreshing()
                 }
             }
         });
