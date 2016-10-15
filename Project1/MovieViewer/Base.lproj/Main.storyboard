@@ -81,8 +81,29 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="4TR-PC-coR">
                                         <rect key="frame" x="0.0" y="-26" width="375" height="609"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
+                                    <view contentMode="scaleToFill" misplaced="YES" id="amb-cR-kpE">
+                                        <rect key="frame" x="48" y="269" width="279" height="282"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sTU-Nj-Old">
+                                                <frame key="frameInset" minX="8" minY="81" width="263" height="201"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bEm-ug-Nqy">
+                                                <frame key="frameInset" minX="8" minY="40" width="263" height="33"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -90,8 +111,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="Nse-4r-LPp"/>
                     <connections>
+                        <outlet property="overviewLabel" destination="sTU-Nj-Old" id="VYg-4f-Uuu"/>
                         <outlet property="posterView" destination="4TR-PC-coR" id="pzH-72-BLI"/>
                         <outlet property="scrollView" destination="hOT-pX-hXw" id="IEW-xO-IAr"/>
+                        <outlet property="titleLabel" destination="bEm-ug-Nqy" id="EF4-D7-qcD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nsp-aU-sTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

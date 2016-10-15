@@ -15,8 +15,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var tableView: UITableView!
     
     var movies: [NSDictionary]?
-    var movie: NSDictionary?
-    var movieImageUrl: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,19 +50,17 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
         
-        self.movie = movies?[indexPath.row]
-        let title = self.movie?["title"] as? String
-        let overview = self.movie?["overview"] as? String
+        let movie = movies?[indexPath.row]
+        let title = movie?["title"] as? String
+        let overview = movie?["overview"] as? String
+        let posterPath = movie?["poster_path"] as? String
         
-        let baseUrl = "https://image.tmdb.org/t/p/w500"
-        let posterPath = self.movie?["poster_path"] as? String
-        
-        self.movieImageUrl = URL(string: baseUrl + posterPath!)
+        let imageUrl = self.createImageURL(posterPath!) as URL
         
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
         
-        cell.posterView.setImageWith(self.movieImageUrl!)
+        cell.posterView.setImageWith(imageUrl)
 
         return cell
     }
@@ -99,11 +95,19 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         task.resume()
     }
     
+    func createImageURL(_ posterPath: String) -> URL {
+        let baseUrl = "https://image.tmdb.org/t/p/w500"
+        
+        return URL(string: baseUrl + posterPath)!
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationViewController = segue.destination as? MovieDetailsViewController
+        
+        let movie = movies?[(self.tableView.indexPathForSelectedRow?.row)!]
 
-        destinationViewController?.movieData = self.movie
-        destinationViewController?.movieImageUrl = self.movieImageUrl
+        destinationViewController?.movieData = movie
+        destinationViewController?.movieImageUrl = createImageURL(movie?["poster_path"] as! String)
     }
 
     /*

@@ -13,6 +13,9 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var posterView: UIImageView!
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var overviewLabel: UILabel!
+    
     var movieData: NSDictionary?
     var movieImageUrl: URL?
     
@@ -25,6 +28,8 @@ class MovieDetailsViewController: UIViewController {
         scrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
         
         posterView.setImageWith(movieImageUrl!)
+        titleLabel.text = movieData?["title"] as? String
+        overviewLabel.text = movieData?["overview"] as? String
         
         // Do any additional setup after loading the view.
     }
