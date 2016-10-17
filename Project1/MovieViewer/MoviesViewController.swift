@@ -15,6 +15,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var tableView: UITableView!
     
     var movies: [NSDictionary]?
+    var endpoint: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,21 +54,37 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         let movie = movies?[indexPath.row]
         let title = movie?["title"] as? String
         let overview = movie?["overview"] as? String
-        let posterPath = movie?["poster_path"] as? String
         
-        let imageUrl = self.createImageURL(posterPath!) as URL
+        if let posterPath = movie?["poster_path"] as? String {
+            let imageUrl = self.createImageURL(posterPath) as URL
+            cell.posterView.setImageWith(imageUrl)
+        }
         
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
         
-        cell.posterView.setImageWith(imageUrl)
 
         return cell
     }
     
     func makeApiRequest(_ refreshControl: UIRefreshControl?) {
+//        if self.endpoint == nil {
+//            self.endpoint = "now_playing"
+//        }
+//
+//        let e = endpoint!
+        
+//        print(endpoint!)
+        
+        var endpoint: String? = nil {
+            didSet {
+                print("didSet:\(self.endpoint)")
+            }
+        }
+        
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = URL(string:"https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
+        let url = URL(string:"https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
+        print(url)
         let request = URLRequest(url: url!)
         let session = URLSession(
             configuration: URLSessionConfiguration.default,
@@ -103,13 +120,17 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationViewController = segue.destination as? MovieDetailsViewController
-   
-        let indexPath = self.tableView.indexPathForSelectedRow
+        
+        let cell = sender as! UITableViewCell
+        let indexPath = self.tableView.indexPath(for: cell)
         let movie = movies?[(indexPath?.row)!]
+        
+        if let posterPath = movie?["poster_path"] as? String {
+            destinationViewController?.movieImageUrl = createImageURL(posterPath)
+        }
 
         destinationViewController?.movieData = movie
-        destinationViewController?.movieImageUrl = createImageURL(movie?["poster_path"] as! String)
-        
+
         self.tableView.deselectRow(at: indexPath!, animated:true)
     }
 
