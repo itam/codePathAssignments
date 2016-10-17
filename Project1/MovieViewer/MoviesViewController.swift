@@ -13,6 +13,7 @@ import MBProgressHUD
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var networkErrorView: UIView!
     
     var movies: [NSDictionary]?
     var endpoint: String!
@@ -23,15 +24,13 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.dataSource = self
         tableView.delegate = self
         
+        networkErrorView.isHidden = true
+        
         let refreshControl = UIRefreshControl()
-        
         refreshControl.addTarget(self, action: #selector(makeApiRequest(_:)), for: UIControlEvents.valueChanged)
-        
         tableView.insertSubview(refreshControl, at: 0)
         
         self.makeApiRequest(nil)
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,15 +61,15 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
-        
 
         return cell
     }
     
     func makeApiRequest(_ refreshControl: UIRefreshControl?) {
-        let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
+        print("called API function")
+        
+        let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed" //+ "2" // TODO: TAKE THIS OUT
         let url = URL(string:"https://api.themoviedb.org/3/movie/\(endpoint!)?api_key=\(apiKey)")
-        print(url)
         let request = URLRequest(url: url!)
         let session = URLSession(
             configuration: URLSessionConfiguration.default,
@@ -82,6 +81,14 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         MBProgressHUD.showAdded(to: self.view, animated: true)
         
         let task : URLSessionDataTask = session.dataTask(with: request,completionHandler: { (dataOrNil, response, error) in
+            
+            let r = response as! HTTPURLResponse
+            
+            // Check for network error
+            if error != nil || r.statusCode != 200 {
+                self.networkErrorView.isHidden = false
+            }
+            
             if let data = dataOrNil {
                 if let responseDictionary = try! JSONSerialization.jsonObject(with: data, options:[]) as? NSDictionary {
 
@@ -95,6 +102,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                 }
             }
         });
+        
         task.resume()
     }
     

@@ -18,12 +18,30 @@
                                 <frame key="frameInset" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="N7f-f9-4lN">
+                                    <rect key="frame" x="0.0" y="64" width="375" height="37"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="warning48" id="HOL-mb-g1v">
+                                            <frame key="frameInset" minX="119" minY="8" width="21" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Network Error" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G3f-iK-Zcn">
+                                            <frame key="frameInset" minX="148" minY="8" width="107" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.4683818717277487" green="0.44693255934565373" blue="0.3699888966802295" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="1" green="0.95420550265326542" blue="0.78993001013345998" alpha="1" colorSpace="calibratedRGB"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="134" id="2RH-Xx-buK" customClass="MovieCell" customModule="MovieViewer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="134"/>
+                                        <rect key="frame" x="0.0" y="129" width="375" height="134"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2RH-Xx-buK" id="erx-pF-keZ">
-                                            <frame key="frameInset" width="342" height="133.5"/>
+                                            <frame key="frameInset" width="342" height="133"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AZy-Lw-PtN">
@@ -60,6 +78,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="4Pw-kX-zEb"/>
                     <connections>
+                        <outlet property="networkErrorView" destination="N7f-f9-4lN" id="C0U-4D-fnL"/>
                         <outlet property="tableView" destination="izf-cM-0DL" id="UJW-Ax-ZY8"/>
                     </connections>
                 </viewController>
@@ -141,6 +160,9 @@
             <point key="canvasLocation" x="149.5" y="386.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="warning48" width="48" height="48"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
