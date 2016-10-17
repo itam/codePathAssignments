@@ -24,8 +24,11 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.dataSource = self
         tableView.delegate = self
         
+        // Have to set the height of the view otherwise it would show up as a blank
+        // space above the table view.
         networkErrorView.isHidden = true
-        
+        networkErrorView.frame.size.height = 0
+
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(makeApiRequest(_:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
@@ -56,7 +59,25 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         if let posterPath = movie?["poster_path"] as? String {
             let imageUrl = self.createImageURL(posterPath) as URL
-            cell.posterView.setImageWith(imageUrl)
+            let urlRequest = URLRequest(url: imageUrl)
+            
+            // Used to create fading effect, otherwise would use `setImageWith(url)`
+            cell.posterView.setImageWith(urlRequest, placeholderImage: nil, success: { (imageRequest, imageResponse, image) in
+                
+                if imageResponse != nil {
+                    cell.posterView.alpha = 0.0
+                    cell.posterView.image = image
+                    
+                    UIView.animate(withDuration: 0.3, animations: { () in
+                        cell.posterView.alpha = 1.0
+                    })
+                } else {
+                    cell.posterView.image = image
+                }
+                
+                }, failure: { (imageRequest, imageResponse, error) in
+                    print("Error setting image: \(error)")
+            })
         }
         
         cell.titleLabel.text = title
@@ -66,8 +87,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func makeApiRequest(_ refreshControl: UIRefreshControl?) {
-        print("called API function")
-        
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed" //+ "2" // TODO: TAKE THIS OUT
         let url = URL(string:"https://api.themoviedb.org/3/movie/\(endpoint!)?api_key=\(apiKey)")
         let request = URLRequest(url: url!)
@@ -87,6 +106,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             // Check for network error
             if error != nil || r.statusCode != 200 {
                 self.networkErrorView.isHidden = false
+                self.networkErrorView.frame.size.height = 36
             }
             
             if let data = dataOrNil {

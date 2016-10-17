@@ -16,6 +16,7 @@ class MovieDetailsViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
+    @IBOutlet weak var releaseDateLabel: UILabel!
     
     var movieData: NSDictionary?
     var movieImageUrl: URL?
@@ -23,13 +24,32 @@ class MovieDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: infoView.frame.origin.y + infoView.frame.size.height)
+        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: infoView.frame.origin.y + infoView.frame.size.height - 100)
         
         if movieImageUrl != nil {
-            posterView.setImageWith(movieImageUrl!)
+            let urlRequest = URLRequest(url: movieImageUrl!)
+            
+            // Used to create fading effect, otherwise would use `setImageWith(url)`
+            posterView.setImageWith(urlRequest, placeholderImage: nil, success: { (imageRequest, imageResponse, image) in
+                
+                if imageResponse != nil {
+                    self.posterView.alpha = 0.0
+                    self.posterView.image = image
+                    
+                    UIView.animate(withDuration: 0.3, animations: { () in
+                        self.posterView.alpha = 1.0
+                    })
+                } else {
+                    self.posterView.image = image
+                }
+                
+                }, failure: { (imageRequest, imageResponse, error) in
+                    print("Error setting image: \(error)")
+            })
         }
         titleLabel.text = movieData?["title"] as? String
         overviewLabel.text = movieData?["overview"] as? String
+        releaseDateLabel.text = movieData?["release_date"] as? String
         
         titleLabel.sizeToFit()
         overviewLabel.sizeToFit()

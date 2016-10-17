@@ -1,7 +1,7 @@
 # Project 1 - *MovieViewer*
 **MovieViewer** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **11** hours spent in total
+Time spent: **13** hours spent in total
 
 ## User Stories
 
