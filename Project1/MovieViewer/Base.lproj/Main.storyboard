@@ -23,7 +23,7 @@
                                         <rect key="frame" x="0.0" y="92" width="375" height="134"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2RH-Xx-buK" id="erx-pF-keZ">
-                                            <frame key="frameInset" width="342" height="133"/>
+                                            <frame key="frameInset" width="342" height="133.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AZy-Lw-PtN">
@@ -50,7 +50,7 @@
                                             <outlet property="overviewLabel" destination="pfM-DR-2Fy" id="fV5-Ob-baF"/>
                                             <outlet property="posterView" destination="8Mj-hl-izw" id="TUv-fE-y8X"/>
                                             <outlet property="titleLabel" destination="AZy-Lw-PtN" id="qOV-He-nYc"/>
-                                            <segue destination="LaP-a3-Krq" kind="push" id="swy-Sj-b3O"/>
+                                            <segue destination="LaP-a3-Krq" kind="push" id="2fS-kJ-Mm8"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -84,7 +84,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sTU-Nj-Old">
-                                                <frame key="frameInset" minX="8" minY="81" width="359" height="201"/>
+                                                <frame key="frameInset" minX="8" minY="81" width="359" height="193"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -101,7 +101,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="4TR-PC-coR">
-                                        <rect key="frame" x="-281" y="0.0" width="375" height="603"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>

@@ -68,22 +68,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func makeApiRequest(_ refreshControl: UIRefreshControl?) {
-//        if self.endpoint == nil {
-//            self.endpoint = "now_playing"
-//        }
-//
-//        let e = endpoint!
-        
-//        print(endpoint!)
-        
-        var endpoint: String? = nil {
-            didSet {
-                print("didSet:\(self.endpoint)")
-            }
-        }
-        
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = URL(string:"https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
+        let url = URL(string:"https://api.themoviedb.org/3/movie/\(endpoint!)?api_key=\(apiKey)")
         print(url)
         let request = URLRequest(url: url!)
         let session = URLSession(
