@@ -1,7 +1,7 @@
 # Project 1 - *MovieViewer*
 **MovieViewer** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **13** hours spent in total
+Time spent: **14** hours spent in total
 
 ## User Stories
 
@@ -10,15 +10,15 @@ The following **required** functionality is completed:
 - [x] User can view a list of movies currently playing in theaters. Poster images load asynchronously.
 - [x] User can view movie details by tapping on a cell.
 - [x] User sees loading state while waiting for the API.
-- [ ] User sees an error message when there is a network error.
+- [x] User sees an error message when there is a network error.
 - [x] User can pull to refresh the movie list.
 
 The following **optional** features are implemented:
 
-- [ ] Add a tab bar for **Now Playing** and **Top Rated** movies.
+- [x] Add a tab bar for **Now Playing** and **Top Rated** movies.
 - [ ] Implement segmented control to switch between list view and grid view.
 - [ ] Add a search bar.
-- [ ] All images fade in.
+- [x] All images fade in.
 - [ ] For the large poster, load the low-res image first, switch to high-res when complete.
 - [ ] Customize the highlight and selection effect of the cell.
 - [ ] Customize the navigation bar.
@@ -31,13 +31,14 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='movieViewer.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='movieViewer-error.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+One major challenge was dealing with the syntax changes between Swift 2 & 3. The tutorial videos and most internet guides are using Swift 2 and while most parts were easy to change over, there was still a hurdle of understanding the language itself and the differences between the two versions. Another struggle that I faced was learning a new language and a new editor at the same time. Often I didn't understand things like error messages, which took some time to get used to.
 
 ## License
 
