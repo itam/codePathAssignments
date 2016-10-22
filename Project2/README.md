@@ -2,7 +2,7 @@
 
 **Yelp** is a Yelp search app using the [Yelp API](http://www.yelp.com/developers/documentation/v2/search_api).
 
-Time spent: **3** hours spent in total
+Time spent: **5** hours spent in total
 
 ## User Stories
 
@@ -16,7 +16,7 @@ The following **required** functionality is completed:
    - [ ] The filters you should actually have are: category, sort (best match, distance, highest rated), distance, deals (on/off).
    - [ ] The filters table should be organized into sections as in the mock.
    - [ ] You can use the default UISwitch for on/off states.
-   - [ ] Clicking on the "Search" button should dismiss the filters page and trigger the search w/ the new filter settings.
+   - [x] Clicking on the "Search" button should dismiss the filters page and trigger the search w/ the new filter settings.
    - [ ] Display some of the available Yelp categories (choose any 3-4 that you want).
 
 The following **optional** features are implemented:
@@ -53,7 +53,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2016] [Iria Tam]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
