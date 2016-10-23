@@ -18,6 +18,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     
     weak var delegate: FiltersViewControllerDelegate?
     
+    
     var categories: [[String: String]]!
     var switchStates = [Int: Bool]()
 
