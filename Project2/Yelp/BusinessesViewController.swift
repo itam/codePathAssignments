@@ -8,11 +8,13 @@
 
 import UIKit
 
-class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FiltersTableViewControllerDelegate {
+class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, FiltersTableViewControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
     var businesses: [Business]!
+    var searchController: UISearchController?
+    var filteredData: [Business]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,24 +24,23 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
         
-        let searchBar = UISearchBar()
-        searchBar.placeholder = "Restaurants"
-        searchBar.sizeToFit()
+        searchController = UISearchController(searchResultsController: nil)
+        searchController?.searchResultsUpdater = self
         
-        navigationItem.titleView = searchBar
+        searchController?.dimsBackgroundDuringPresentation = false
+        searchController?.hidesNavigationBarDuringPresentation = false
+        searchController?.searchBar.placeholder = "Restaurants"
+        searchController?.searchBar.sizeToFit()
+        
+        navigationItem.titleView = searchController?.searchBar
+        
+        definesPresentationContext = true
         
         Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
             
             self.businesses = businesses
+            self.filteredData = businesses
             self.tableView.reloadData()
-            
-//            if let businesses = businesses {
-//                for business in businesses {
-//                    print(business.name!)
-//                    print(business.address!)
-//                }
-//            }
-            
             }
         )
         
@@ -60,18 +61,36 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return businesses?.count ?? 0
+        
+        print("COUNT: \(filteredData?.count)")
+        print("COUNT: \(businesses?.count)")
+        
+        return filteredData?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BusinessCell", for: indexPath) as! BusinessCell
         
-        cell.business = businesses[indexPath.row]
+        cell.business = filteredData[indexPath.row]
         
         return cell
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            print("Search text: \(searchText)")
+            filteredData = searchText.isEmpty ? businesses : businesses.filter({(business: Business) -> Bool in
+                return business.name?.range(of: searchText, options: .caseInsensitive) != nil
+            })
+            
+            print(filteredData)
+            
+            tableView.reloadData()
+        }
+        
+        print("THE END")
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
