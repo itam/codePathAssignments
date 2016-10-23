@@ -8,6 +8,10 @@
 
 import UIKit
 
+@objc protocol FiltersTableViewControllerDelegate {
+    @objc optional func filtersTableViewController(filtersTableViewController: FiltersTableViewController, didUpdateFilters filters: Filters)
+}
+
 class FiltersTableViewController: UITableViewController {
 
     @IBOutlet weak var dealsSwitch: UISwitch!
@@ -17,8 +21,27 @@ class FiltersTableViewController: UITableViewController {
     @IBOutlet weak var categorySwitch3: UISwitch!
     @IBOutlet weak var categorySwitch4: UISwitch!
     
+    @IBOutlet weak var selectionCell: UITableViewCell!
+    
+    weak var delegate: FiltersTableViewControllerDelegate?
+    
+    let categories = [
+        ["name": "Afghan", "code": "afghani"],
+        ["name": "African", "code": "african"],
+        ["name": "American, New American", "code": "newamerican"],
+        ["name": "American, Tradtional", "code": "tradamerican"]
+    ]
+    
+    var filters: Filters = Filters () {
+        didSet {
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        initSwitches()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -31,21 +54,59 @@ class FiltersTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func initSwitches() {
+        dealsSwitch.isOn = false
+        
+        selectionCell.accessoryType = .checkmark
+        
+        categorySwitch1.isOn = false
+        categorySwitch2.isOn = false
+        categorySwitch3.isOn = false
+        categorySwitch4.isOn = false
+    }
 
     @IBAction func onCancelButton(_ sender: AnyObject) {
         dismiss(animated: true)
     }
     
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    @IBAction func onSaveButton(_ sender: AnyObject) {
+        dismiss(animated: true)
+        
+        var selectedCategories = [String]()
+        
+        filters.deals = dealsSwitch.isOn
+        
+        if categorySwitch1.isOn {
+            selectedCategories.append("afghani")
+        }
+        
+        if categorySwitch2.isOn {
+            selectedCategories.append("african")
+        }
+        
+        if categorySwitch3.isOn {
+            selectedCategories.append("newamerican")
+        }
+        
+        if categorySwitch4.isOn {
+            selectedCategories.append("tradamerican")
+        }
+        
+        filters.categories = selectedCategories
+        
+        delegate?.filtersTableViewController!(filtersTableViewController: self, didUpdateFilters: filters)
     }
-    */
+
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "selectionCell", for: indexPath)
+//        
+//        print("tapped")
+//
+//        // Configure the cell...
+//
+//        return cell
+//    }
 
     /*
     // Override to support conditional editing of the table view.

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FiltersViewControllerDelegate {
+class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FiltersTableViewControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -33,12 +33,12 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
             self.businesses = businesses
             self.tableView.reloadData()
             
-            if let businesses = businesses {
-                for business in businesses {
-                    print(business.name!)
-                    print(business.address!)
-                }
-            }
+//            if let businesses = businesses {
+//                for business in businesses {
+//                    print(business.name!)
+//                    print(business.address!)
+//                }
+//            }
             
             }
         )
@@ -75,18 +75,18 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let navigationController = segue.destination as! UINavigationController
-//        let filtersViewController = navigationController.topViewController as! FiltersViewController
-//        
-//        filtersViewController.delegate = self
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navigationController = segue.destination as! UINavigationController
+        let filtersTableViewController = navigationController.topViewController as! FiltersTableViewController
+        
+        filtersTableViewController.delegate = self
+    }
     
-    func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String : AnyObject]) {
+    func filtersTableViewController(filtersTableViewController: FiltersTableViewController, didUpdateFilters filters: Filters) {
         
-        var categories = filters["categories"] as? [String]
+        var categories = filters.categories! as [String]
         
-        Business.searchWithTerm(term: "Restaurants", sort: nil, categories: categories, deals: nil, completion: { (businesses: [Business]?, error: Error?) -> Void in
+        Business.searchWithTerm(term: "Restaurants", sort: nil, categories: categories, deals: filters.deals, completion: { (businesses: [Business]?, error: Error?) -> Void in
             
             self.businesses = businesses
             self.tableView.reloadData()
