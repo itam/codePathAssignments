@@ -32,10 +32,10 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     ]
     
     let distance = [
-        ["name": "Within 4 Blocks", "value": 0.3],
-        ["name": "Walking (1 mi.)", "value": 1],
-        ["name": "Biking (2 mi.)", "value": 2],
-        ["name": "Driving (5 mi.)", "value": 5],
+        ["name": "Within 4 Blocks", "value": 482],
+        ["name": "Walking (1 mi.)", "value": 1609],
+        ["name": "Biking (2 mi.)", "value": 3218],
+        ["name": "Driving (5 mi.)", "value": 8046],
     ]
     
     let categories = [
