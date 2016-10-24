@@ -119,7 +119,7 @@
                     <navigationItem key="navigationItem" title="Yelp" id="uQE-iD-sne">
                         <barButtonItem key="leftBarButtonItem" title="Filters" id="Gt2-WR-ujq">
                             <connections>
-                                <segue destination="dQM-mi-Ux7" kind="presentation" id="hPv-rs-VeM"/>
+                                <segue destination="bcJ-KP-h1P" kind="presentation" id="DgJ-2s-NUS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -143,15 +143,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="102" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tze-jO-Wrg">
-                                <frame key="frameInset" width="375" height="343"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="102" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tze-jO-Wrg">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" rowHeight="102" id="iKn-1a-9jk" customClass="SwitchCell" customModule="Yelp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="102"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" rowHeight="50" id="iKn-1a-9jk" customClass="SwitchCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iKn-1a-9jk" id="EzP-sA-DCE">
-                                            <frame key="frameInset" width="375" height="101"/>
+                                            <frame key="frameInset" width="375" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahc-rD-GdT">
@@ -162,10 +161,12 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="at2-SZ-Bo7"/>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="at2-SZ-Bo7" firstAttribute="centerY" secondItem="EzP-sA-DCE" secondAttribute="centerY" id="21g-yP-bE3"/>
-                                                <constraint firstAttribute="trailing" secondItem="at2-SZ-Bo7" secondAttribute="trailing" constant="14" id="Dk7-5O-Lzm"/>
-                                                <constraint firstItem="ahc-rD-GdT" firstAttribute="centerY" secondItem="EzP-sA-DCE" secondAttribute="centerY" id="Qpo-SP-yb0"/>
-                                                <constraint firstItem="ahc-rD-GdT" firstAttribute="leading" secondItem="EzP-sA-DCE" secondAttribute="leading" constant="14" id="Ytf-qx-2dz"/>
+                                                <constraint firstAttribute="trailing" secondItem="at2-SZ-Bo7" secondAttribute="trailing" constant="14" id="Koq-B9-Jvn"/>
+                                                <constraint firstItem="ahc-rD-GdT" firstAttribute="top" secondItem="EzP-sA-DCE" secondAttribute="top" constant="8" id="OoW-MK-Yut"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="at2-SZ-Bo7" secondAttribute="bottom" constant="8" id="Q8X-zP-bDX"/>
+                                                <constraint firstItem="at2-SZ-Bo7" firstAttribute="top" secondItem="EzP-sA-DCE" secondAttribute="top" constant="8" id="TSv-l8-BvJ"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ahc-rD-GdT" secondAttribute="bottom" constant="8" id="Wrh-ul-RsH"/>
+                                                <constraint firstItem="ahc-rD-GdT" firstAttribute="leading" secondItem="EzP-sA-DCE" secondAttribute="leading" constant="14" id="mwe-lh-Y0L"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -173,15 +174,38 @@
                                             <outlet property="switchLabel" destination="ahc-rD-GdT" id="HwU-OE-mgL"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectionCell" rowHeight="50" id="Vje-NA-8gg" customClass="SelectionCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="142" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vje-NA-8gg" id="w0t-SL-k0R">
+                                            <frame key="frameInset" width="375" height="49"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uiJ-q9-KYY">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="uiJ-q9-KYY" firstAttribute="top" secondItem="w0t-SL-k0R" secondAttribute="top" constant="8" id="Gvb-5O-hix"/>
+                                                <constraint firstItem="uiJ-q9-KYY" firstAttribute="leading" secondItem="w0t-SL-k0R" secondAttribute="leading" constant="14" id="ZkB-gr-wx3"/>
+                                                <constraint firstAttribute="bottom" secondItem="uiJ-q9-KYY" secondAttribute="bottom" constant="8" id="dqO-22-cEx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="selectionLabel" destination="uiJ-q9-KYY" id="37e-ee-8DG"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Tze-jO-Wrg" firstAttribute="leading" secondItem="gEy-Rc-lfK" secondAttribute="leading" id="C0p-YU-zat"/>
-                            <constraint firstItem="8CC-ou-WVN" firstAttribute="top" secondItem="Tze-jO-Wrg" secondAttribute="bottom" id="P00-UQ-SX5"/>
-                            <constraint firstAttribute="trailing" secondItem="Tze-jO-Wrg" secondAttribute="trailing" id="YJQ-YS-3I8"/>
-                            <constraint firstItem="Tze-jO-Wrg" firstAttribute="top" secondItem="gEy-Rc-lfK" secondAttribute="top" id="b6I-yn-FZH"/>
+                            <constraint firstItem="8CC-ou-WVN" firstAttribute="top" secondItem="Tze-jO-Wrg" secondAttribute="bottom" id="4bn-Bj-KIY"/>
+                            <constraint firstItem="Tze-jO-Wrg" firstAttribute="top" secondItem="gEy-Rc-lfK" secondAttribute="top" id="AVA-wL-SCk"/>
+                            <constraint firstAttribute="trailing" secondItem="Tze-jO-Wrg" secondAttribute="trailing" id="FQO-3G-FXW"/>
+                            <constraint firstItem="Tze-jO-Wrg" firstAttribute="leading" secondItem="gEy-Rc-lfK" secondAttribute="leading" id="jym-0n-1Up"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Filters" id="Oxm-Xd-prH">

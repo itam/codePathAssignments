@@ -8,8 +8,18 @@
 
 import UIKit
 
+@objc protocol SelectionCellDelegate {
+    @objc optional func selectionCell(selectionCell: SelectionCell, didChangeValue value: Bool)
+}
+
 class SelectionCell: UITableViewCell {
 
+    @IBOutlet weak var selectionLabel: UILabel!
+    
+    weak var delegate: SelectionCellDelegate?
+    
+    var isChosen: Bool! = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -17,8 +27,24 @@ class SelectionCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
+        print("set selected \(self.selectionLabel.text)")
+        
+        isChosen = !isChosen
+        
+        selectionValueChanged()
+        
+        if isChosen == true {
+            print("selected!")
+            self.accessoryType = .checkmark
+        } else {
+            self.accessoryType = .none
+            print("not selected :(")
+        }
+    }
+    
+    func selectionValueChanged() {
+        delegate?.selectionCell!(selectionCell: self, didChangeValue: isChosen)
     }
 
 }
