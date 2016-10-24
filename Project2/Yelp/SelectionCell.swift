@@ -8,17 +8,9 @@
 
 import UIKit
 
-@objc protocol SelectionCellDelegate {
-    @objc optional func selectionCell(selectionCell: SelectionCell, didChangeValue value: Bool)
-}
-
 class SelectionCell: UITableViewCell {
 
     @IBOutlet weak var selectionLabel: UILabel!
-    
-    weak var delegate: SelectionCellDelegate?
-    
-    var isChosen: Bool! = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,22 +19,5 @@ class SelectionCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-//        print("set selected \(self.selectionLabel.text)")
-//        
-//        isChosen = !isChosen
-//        
-//        selectionValueChanged()
-//        
-//        if isChosen == true {
-//            self.accessoryType = .checkmark
-//        } else {
-//            self.accessoryType = .none
-//        }
     }
-    
-    func selectionValueChanged() {
-        delegate?.selectionCell!(selectionCell: self, didChangeValue: isChosen)
-    }
-
 }

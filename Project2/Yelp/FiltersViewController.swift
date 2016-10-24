@@ -19,7 +19,7 @@ enum FiltersCategoryIdentifier: String {
     case Categories = "Categories"
 }
 
-class FiltersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwitchCellDelegate, SelectionCellDelegate {
+class FiltersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwitchCellDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -47,8 +47,8 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     ]
     
     var switchStates = [Int: Bool]()
-    var selectedDistanceCell: SelectionCell?
-    var selectedSortByCell: SelectionCell?
+    var selectedDistanceCell: SelectionCell? // Current selected distance filter
+    var selectedSortByCell: SelectionCell? // Current selected sort filter
     var distanceStates = [Int: Bool]()
     var sortByStates = [Int: Bool]()
     
@@ -101,27 +101,27 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch(indexPath.section) {
             case 1:
-                print("distance")
-                print(distanceStates)
-                
-            
+                // Deselect the option the user has already picked
                 selectedDistanceCell?.accessoryType = .none
                 
+                // Update the filter model with the new selection
                 filters.distance = distance[(indexPath.row)]["value"] as? NSNumber
                 
+                // Assign the newly selected option and show checkmark
                 selectedDistanceCell = tableView.cellForRow(at: indexPath) as? SelectionCell
                 selectedDistanceCell?.accessoryType = .checkmark
             case 2:
-                print("sortby")
-                print(sortByStates)
-                
+                // Deselect the option the user has already picked
                 selectedSortByCell?.accessoryType = .none
                 
+                // Update the filter model with the new selection
                 filters.sortBy = YelpSortMode(rawValue: (sortBy[(indexPath.row)]["value"] as? Int)!)
                 
+                // Assign the newly selected option and show checkmark
                 selectedSortByCell = tableView.cellForRow(at: indexPath) as? SelectionCell
                 selectedSortByCell?.accessoryType = .checkmark
             default:
+                // Don't do anything if it is a switch cell
                 print("default")
         }
     }
@@ -141,19 +141,14 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
             let cell = tableView.dequeueReusableCell(withIdentifier: "DistanceSelectionCell", for: indexPath) as! SelectionCell
 
             cell.selectionLabel.text = distance[indexPath.row]["name"] as? String
-            cell.isChosen = distanceStates[indexPath.row] ?? false
             cell.isSelected = distanceStates[indexPath.row] ?? false
-            
-            cell.delegate = self
-            
+
             return cell
         } else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SortBySelectionCell", for: indexPath) as! SelectionCell
             
             cell.selectionLabel.text = sortBy[indexPath.row]["name"]! as? String
-            cell.isChosen = sortByStates[indexPath.row] ?? false
             cell.isSelected = sortByStates[indexPath.row] ?? false
-            cell.delegate = self
             
             return cell
         } else {
@@ -165,39 +160,6 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
             cell.onSwitch.isOn = switchStates[indexPath.row] ?? false
             
             return cell
-        }
-    }
-    
-    func selectionCell(selectionCell: SelectionCell, didChangeValue value: Bool) {
-        let indexPath = tableView.indexPath(for: selectionCell)
-        
-        let section = indexPath?.section
-        
-        if section == 1 {
-            print("reset")
-            // Reset selected state because we can only have one selected at a time
-//            for (row, _) in distanceStates {
-//                distanceStates[row] = false
-//            }
-            
-//            distanceStates[(indexPath?.row)!] = value
-            
-            
-            
-            selectionCell.isChosen = value
-            
-            print(filters.distance)
-        } else if section == 2 {
-//            for (row, _) in distanceStates {
-//                distanceStates[row] = false
-//            }
-            
-//            sortByStates[(indexPath?.row)!] = value
-            selectionCell.isChosen = value
-            
-            print("is Chosen : \(selectionCell.isChosen)")
-            
-            print("sort by: \(filters.sortBy)")
         }
     }
     
