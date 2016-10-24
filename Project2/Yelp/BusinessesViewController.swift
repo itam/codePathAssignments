@@ -28,12 +28,16 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         searchController?.searchResultsUpdater = self
         
         searchController?.dimsBackgroundDuringPresentation = false
-        searchController?.hidesNavigationBarDuringPresentation = false
+        searchController?.hidesNavigationBarDuringPresentation = false // Needs this because search bar kept disappearing
         searchController?.searchBar.placeholder = "Restaurants"
         searchController?.searchBar.sizeToFit()
         
         navigationItem.titleView = searchController?.searchBar
         
+        navigationController?.navigationBar.barTintColor = UIColor.red // Red navigation background
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.white // White filters button
+        searchController?.searchBar.tintColor = UIColor.white // White cancel button
+
         definesPresentationContext = true
         
         Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
