@@ -10,7 +10,7 @@ import UIKit
 
 class Filters: NSObject {
     var deals: Bool? = false
-    var distance: NSNumber? = 5
-    var sortBy: YelpSortMode? = YelpSortMode(rawValue: 0)
+    var distance: NSNumber? = 482 // 0.3 miles as default distance
+    var sortBy: YelpSortMode? = YelpSortMode(rawValue: 0) //  best matched as default
     var categories: [String]? = []
 }

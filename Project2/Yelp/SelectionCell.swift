@@ -28,19 +28,17 @@ class SelectionCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        print("set selected \(self.selectionLabel.text)")
-        
-        isChosen = !isChosen
-        
-        selectionValueChanged()
-        
-        if isChosen == true {
-            print("selected!")
-            self.accessoryType = .checkmark
-        } else {
-            self.accessoryType = .none
-            print("not selected :(")
-        }
+//        print("set selected \(self.selectionLabel.text)")
+//        
+//        isChosen = !isChosen
+//        
+//        selectionValueChanged()
+//        
+//        if isChosen == true {
+//            self.accessoryType = .checkmark
+//        } else {
+//            self.accessoryType = .none
+//        }
     }
     
     func selectionValueChanged() {

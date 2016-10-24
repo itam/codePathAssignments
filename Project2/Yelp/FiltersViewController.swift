@@ -31,6 +31,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         ["name": "Highest Rated", "value": 2]
     ]
     
+    // Distance in meters
     let distance = [
         ["name": "Within 4 Blocks", "value": 482],
         ["name": "Walking (1 mi.)", "value": 1609],
@@ -45,10 +46,9 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         ["name": "American, Tradtional", "code": "tradamerican"]
     ]
     
-    let tableStructure: [[FiltersCategoryIdentifier]] = [[.OfferingADeal], [.Distance], [.SortyBy], [.Categories]]
-    
-    var offeringADeal = 0
     var switchStates = [Int: Bool]()
+    var selectedDistanceCell: SelectionCell?
+    var selectedSortByCell: SelectionCell?
     var distanceStates = [Int: Bool]()
     var sortByStates = [Int: Bool]()
     
@@ -67,7 +67,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return tableStructure.count
+        return 4
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -86,14 +86,15 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if section == 1 {
-            return distance.count
-        } else if section == 2 {
-            return sortBy.count
-        } else if section == 3 {
-            return categories.count
-        } else {
-            return tableStructure[section].count
+        switch (section) {
+            case 1:
+                return distance.count
+            case 2:
+                return sortBy.count
+            case 3:
+                return categories.count
+            default:
+                return 1
         }
     }
     
@@ -101,8 +102,25 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         switch(indexPath.section) {
             case 1:
                 print("distance")
+                print(distanceStates)
+                
+            
+                selectedDistanceCell?.accessoryType = .none
+                
+                filters.distance = distance[(indexPath.row)]["value"] as? NSNumber
+                
+                selectedDistanceCell = tableView.cellForRow(at: indexPath) as? SelectionCell
+                selectedDistanceCell?.accessoryType = .checkmark
             case 2:
                 print("sortby")
+                print(sortByStates)
+                
+                selectedSortByCell?.accessoryType = .none
+                
+                filters.sortBy = YelpSortMode(rawValue: (sortBy[(indexPath.row)]["value"] as? Int)!)
+                
+                selectedSortByCell = tableView.cellForRow(at: indexPath) as? SelectionCell
+                selectedSortByCell?.accessoryType = .checkmark
             default:
                 print("default")
         }
@@ -120,7 +138,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
             
             return cell
         } else if (indexPath.section == 1) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SelectionCell", for: indexPath) as! SelectionCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DistanceSelectionCell", for: indexPath) as! SelectionCell
 
             cell.selectionLabel.text = distance[indexPath.row]["name"] as? String
             cell.isChosen = distanceStates[indexPath.row] ?? false
@@ -130,9 +148,11 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
             
             return cell
         } else if indexPath.section == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SelectionCell", for: indexPath) as! SelectionCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SortBySelectionCell", for: indexPath) as! SelectionCell
             
-            cell.selectionLabel.text = sortBy[indexPath.row]["name"]! as! String
+            cell.selectionLabel.text = sortBy[indexPath.row]["name"]! as? String
+            cell.isChosen = sortByStates[indexPath.row] ?? false
+            cell.isSelected = sortByStates[indexPath.row] ?? false
             cell.delegate = self
             
             return cell
@@ -156,19 +176,26 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         if section == 1 {
             print("reset")
             // Reset selected state because we can only have one selected at a time
-            for (row, _) in distanceStates {
-                distanceStates[row] = false
-            }
+//            for (row, _) in distanceStates {
+//                distanceStates[row] = false
+//            }
             
-            distanceStates[(indexPath?.row)!] = value
+//            distanceStates[(indexPath?.row)!] = value
             
-            print(distanceStates)
             
-            filters.distance = distance[(indexPath?.row)!]["value"] as? NSNumber
+            
+            selectionCell.isChosen = value
             
             print(filters.distance)
         } else if section == 2 {
-            filters.sortBy = YelpSortMode(rawValue: (sortBy[(indexPath?.row)!]["value"] as? Int)!)
+//            for (row, _) in distanceStates {
+//                distanceStates[row] = false
+//            }
+            
+//            sortByStates[(indexPath?.row)!] = value
+            selectionCell.isChosen = value
+            
+            print("is Chosen : \(selectionCell.isChosen)")
             
             print("sort by: \(filters.sortBy)")
         }
@@ -178,7 +205,6 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         let indexPath = tableView.indexPath(for: switchCell)
         
         if indexPath?.section == 3 {
-            print("setting categories")
             switchStates[(indexPath?.row)!] = value
         } else {
             filters.deals = value
@@ -194,6 +220,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         
         var selectedCategories = [String]()
         
+        // Build the categories array for searching
         for (row, isSelected) in switchStates {
             if isSelected {
                 selectedCategories.append(categories[row]["code"]!)

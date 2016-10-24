@@ -143,7 +143,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="102" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tze-jO-Wrg">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tze-jO-Wrg">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" rowHeight="50" id="iKn-1a-9jk" customClass="SwitchCell" customModule="Yelp" customModuleProvider="target">
@@ -174,7 +174,7 @@
                                             <outlet property="switchLabel" destination="ahc-rD-GdT" id="HwU-OE-mgL"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectionCell" rowHeight="50" id="Vje-NA-8gg" customClass="SelectionCell" customModule="Yelp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DistanceSelectionCell" rowHeight="50" id="Vje-NA-8gg" customClass="SelectionCell" customModule="Yelp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="142" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vje-NA-8gg" id="w0t-SL-k0R">
@@ -195,6 +195,29 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="selectionLabel" destination="uiJ-q9-KYY" id="37e-ee-8DG"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SortBySelectionCell" rowHeight="50" id="rpZ-hD-5TK" customClass="SelectionCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="192" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rpZ-hD-5TK" id="t4b-iB-Jhq">
+                                            <frame key="frameInset" width="375" height="49"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUs-EG-wG3">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="tUs-EG-wG3" firstAttribute="leading" secondItem="t4b-iB-Jhq" secondAttribute="leading" constant="14" id="HLV-qq-vxc"/>
+                                                <constraint firstItem="tUs-EG-wG3" firstAttribute="top" secondItem="t4b-iB-Jhq" secondAttribute="top" constant="8" id="bEu-Mc-sTG"/>
+                                                <constraint firstAttribute="bottom" secondItem="tUs-EG-wG3" secondAttribute="bottom" constant="8" id="eGW-Fi-1hx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="selectionLabel" destination="tUs-EG-wG3" id="KKv-5m-zLT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
