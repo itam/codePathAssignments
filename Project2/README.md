@@ -2,7 +2,7 @@
 
 **Yelp** is a Yelp search app using the [Yelp API](http://www.yelp.com/developers/documentation/v2/search_api).
 
-Time spent: **19** hours spent in total
+Time spent: **20** hours spent in total
 
 ## User Stories
 
@@ -32,24 +32,27 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] Have the distance and sort by options as checkmarks instead of switches so that only one could be selected at any time.
+- [x] Cosmetic changes to the navigation bar to have it more like the Yelp app.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. Have better ways of building the table structure for dynamic table views for settings. UI conventions for iOS and how to implement them.
+2. Best practices for storing and reusing information between view controllers. When should we be using the model? When should we be storing data in the view controller? When is the best time to write to the model?
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='yelp.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
+
+I had a lot of trouble trying to build the filters page. At first I thought we were supposed to build it statically, and then I discovered we needed to build dynamically. There weren't many guides to help with dynamic table views and I ended up rebuilding this view three or four times. I would say most of the time spent on this assignment was just understanding what I needed to do for the filters page.
 
 ## License
 
