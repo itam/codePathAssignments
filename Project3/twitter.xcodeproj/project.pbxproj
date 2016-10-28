@@ -8,21 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		0A3D5F0C1DC2E40200178856 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3D5F0B1DC2E40200178856 /* AppDelegate.swift */; };
-		0A3D5F0E1DC2E40200178856 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3D5F0D1DC2E40200178856 /* ViewController.swift */; };
 		0A3D5F111DC2E40200178856 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A3D5F0F1DC2E40200178856 /* Main.storyboard */; };
 		0A3D5F131DC2E40200178856 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A3D5F121DC2E40200178856 /* Assets.xcassets */; };
 		0A3D5F161DC2E40200178856 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A3D5F141DC2E40200178856 /* LaunchScreen.storyboard */; };
+		0A3D5F1E1DC2E5E800178856 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3D5F1D1DC2E5E800178856 /* LoginViewController.swift */; };
 		70B2435E5E31A7EDD8FD2DA3 /* Pods_twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180B563305E8DCB948187056 /* Pods_twitter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0A3D5F081DC2E40200178856 /* twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A3D5F0B1DC2E40200178856 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0A3D5F0D1DC2E40200178856 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0A3D5F101DC2E40200178856 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0A3D5F121DC2E40200178856 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A3D5F151DC2E40200178856 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A3D5F171DC2E40200178856 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A3D5F1D1DC2E5E800178856 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		180B563305E8DCB948187056 /* Pods_twitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_twitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EFDD1327799C35D074A5DCA /* Pods-twitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-twitter/Pods-twitter.debug.xcconfig"; sourceTree = "<group>"; };
 		E4BB44B286C3BB61E212CB17 /* Pods-twitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitter.release.xcconfig"; path = "Pods/Target Support Files/Pods-twitter/Pods-twitter.release.xcconfig"; sourceTree = "<group>"; };
@@ -62,11 +62,11 @@
 			isa = PBXGroup;
 			children = (
 				0A3D5F0B1DC2E40200178856 /* AppDelegate.swift */,
-				0A3D5F0D1DC2E40200178856 /* ViewController.swift */,
 				0A3D5F0F1DC2E40200178856 /* Main.storyboard */,
 				0A3D5F121DC2E40200178856 /* Assets.xcassets */,
 				0A3D5F141DC2E40200178856 /* LaunchScreen.storyboard */,
 				0A3D5F171DC2E40200178856 /* Info.plist */,
+				0A3D5F1D1DC2E5E800178856 /* LoginViewController.swift */,
 			);
 			path = twitter;
 			sourceTree = "<group>";
@@ -211,7 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A3D5F0E1DC2E40200178856 /* ViewController.swift in Sources */,
+				0A3D5F1E1DC2E5E800178856 /* LoginViewController.swift in Sources */,
 				0A3D5F0C1DC2E40200178856 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
