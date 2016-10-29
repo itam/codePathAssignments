@@ -10,16 +10,19 @@ import UIKit
 import BDBOAuth1Manager
 
 class TwitterClient: BDBOAuth1SessionManager {
+    
     static let sharedInstance = TwitterClient(baseURL: NSURL(string: "https://api.twitter.com")! as URL!, consumerKey: "03H01OeZduhArjGDxwK7w", consumerSecret: "ygATTwaAVh0GT7gnyYAmOnpfN5rF6siiY13dmOQYyWs")
     
-    func currentAccount() {
+    func currentAccount(success: @escaping (User) -> (), failure: @escaping (Error) -> ()) {
         get("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
             
-                print("account :\(response)")
-                let user = response as? NSDictionary
+            let userDictionary = response as? NSDictionary
+            let user = User(dictionary: userDictionary!)
             
-            }, failure: { (task: URLSessionDataTask?, error: Error) in
-                print("error: \(error.localizedDescription)")
+            success(user)
+            
+        }, failure: { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
         })
     }
     
@@ -39,10 +42,17 @@ class TwitterClient: BDBOAuth1SessionManager {
             
             UIApplication.shared.open(authorizeUrl)
             
-            }, failure: { (error) in
-                self.loginFailure?(error!)
-                print("error: \(error?.localizedDescription)")
+        }, failure: { (error) in
+            self.loginFailure?(error!)
+            print("error: \(error?.localizedDescription)")
         })
+    }
+    
+    func logout() {
+        User.currentUser = nil
+        deauthorize()
+        
+        NotificationCenter.default.post(name: User.USER_DID_LOGOUT_NOTIFICATION, object: nil)
     }
     
     func handleOpenUrl(url: URL) {
@@ -50,7 +60,14 @@ class TwitterClient: BDBOAuth1SessionManager {
         
         fetchAccessToken(withPath: "https://api.twitter.com/oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential?) in
             
-            self.loginSuccess?()
+            self.currentAccount(success: { (user: User) in
+                User.currentUser = user
+                
+                self.loginSuccess?()
+                
+            }, failure: { (error: Error) in
+                    self.loginFailure?(error)
+            })
             
         }, failure: { (error) in
             print("error: \(error?.localizedDescription)")

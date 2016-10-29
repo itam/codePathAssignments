@@ -73,7 +73,13 @@
                             <constraint firstAttribute="trailing" secondItem="kC2-1h-1fF" secondAttribute="trailing" id="onl-eu-eeH"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="1pc-eu-jV9"/>
+                    <navigationItem key="navigationItem" id="1pc-eu-jV9">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="8OC-mO-Gwo">
+                            <connections>
+                                <action selector="onLogoutButton:" destination="L3h-Hi-BGF" id="r7z-A8-FfU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bJD-Oo-1Kp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -82,7 +88,7 @@
         <!--Navigation Controller-->
         <scene sceneID="HyD-Hw-1mf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="piu-48-bl4" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="piu-48-bl4" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="O1e-FS-fe9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
