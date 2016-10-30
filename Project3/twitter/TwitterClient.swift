@@ -50,6 +50,8 @@ class TwitterClient: BDBOAuth1SessionManager {
     
     func logout() {
         User.currentUser = nil
+        
+        requestSerializer.removeAccessToken()
         deauthorize()
         
         NotificationCenter.default.post(name: User.USER_DID_LOGOUT_NOTIFICATION, object: nil)
@@ -59,6 +61,8 @@ class TwitterClient: BDBOAuth1SessionManager {
         let requestToken = BDBOAuth1Credential(queryString: url.query)
         
         fetchAccessToken(withPath: "https://api.twitter.com/oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential?) in
+            
+            self.requestSerializer.saveAccessToken(accessToken);
             
             self.currentAccount(success: { (user: User) in
                 User.currentUser = user
@@ -90,5 +94,21 @@ class TwitterClient: BDBOAuth1SessionManager {
                 print("error in homeTimeline")
                 failure(error)
         })
+    }
+    
+    func createTweet(tweet: String?, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {
+        let parameters = [
+            "status": tweet!
+        ]
+        
+        post("1.1/statuses/update.json", parameters: parameters, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            
+            let tweet = Tweet(dictionary: response as! NSDictionary)
+            success(tweet)
+            
+        }) { (task: URLSessionDataTask?, error: Error) in
+            print("error creating tweet: \(error.localizedDescription)")
+            failure(error)
+        }
     }
 }

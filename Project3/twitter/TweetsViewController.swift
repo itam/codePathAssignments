@@ -64,6 +64,21 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         })
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "singleTweetSegue" {
+            let destinationViewController = segue.destination as? SingleTweetViewController
+            
+            let cell = sender as! UITableViewCell
+            let indexPath = self.tableView.indexPath(for: cell)
+            let tweet = tweets?[(indexPath?.row)!]
+            
+            destinationViewController?.tweet = tweet
+            
+            self.tableView.deselectRow(at: indexPath!, animated:true)
+        }
+    }
+    
     @IBAction func onLogoutButton(_ sender: AnyObject) {
         TwitterClient.sharedInstance?.logout()
     }
