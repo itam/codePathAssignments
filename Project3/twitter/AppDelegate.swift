@@ -18,14 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         if User.currentUser != nil {
-            print("current user")
-            
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
             
             window?.rootViewController = viewController
-        } else {
-            print("no current user")
         }
         
         NotificationCenter.default.addObserver(forName: User.USER_DID_LOGOUT_NOTIFICATION, object: nil, queue: OperationQueue.main) { (notification: Notification) in
@@ -62,9 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        
-        print(url.description)
-        
         TwitterClient.sharedInstance?.handleOpenUrl(url: url)
         
         return true

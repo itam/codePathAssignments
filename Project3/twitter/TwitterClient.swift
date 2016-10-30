@@ -43,8 +43,8 @@ class TwitterClient: BDBOAuth1SessionManager {
             UIApplication.shared.open(authorizeUrl)
             
         }, failure: { (error) in
+            print("error in login")
             self.loginFailure?(error!)
-            print("error: \(error?.localizedDescription)")
         })
     }
     
@@ -66,7 +66,8 @@ class TwitterClient: BDBOAuth1SessionManager {
                 self.loginSuccess?()
                 
             }, failure: { (error: Error) in
-                    self.loginFailure?(error)
+                print("handle open url failed")
+                self.loginFailure?(error)
             })
             
         }, failure: { (error) in
@@ -77,6 +78,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
     
     func homeTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+        
         get("1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
                 let dictionaries = response as! [NSDictionary]
             
@@ -85,6 +87,7 @@ class TwitterClient: BDBOAuth1SessionManager {
                 success(tweets)
             
             }, failure: { (task: URLSessionDataTask?, error: Error) in
+                print("error in homeTimeline")
                 failure(error)
         })
     }
