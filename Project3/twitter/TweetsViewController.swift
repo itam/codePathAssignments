@@ -17,6 +17,11 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
+        
+        tableView.insertSubview(refreshControl, at: 0)
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -48,6 +53,15 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell?.tweet = tweets?[indexPath.row]
         
         return cell!
+    }
+    
+    func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) in
+            self.tweets = tweets
+            self.tableView.reloadData()
+        }, failure: { (error: Error) in
+            print("error in refreshControlAction: \(error.localizedDescription)")
+        })
     }
     
     @IBAction func onLogoutButton(_ sender: AnyObject) {
