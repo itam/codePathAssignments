@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -61,39 +62,49 @@
                                             <frame key="frameInset" width="375" height="118"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ajD-wQ-1rb">
-                                                    <frame key="frameInset" minX="8" minY="8" width="66" height="66"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ajD-wQ-1rb">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="65" id="3hU-F1-ce9"/>
+                                                        <constraint firstAttribute="height" constant="65" id="Jro-kA-HJL"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Joe Schmoe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUX-Aq-qjz">
-                                                    <frame key="frameInset" minX="98" minY="8" width="95" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Joe Schmoe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUX-Aq-qjz">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is Joe Schmoe's tweet, yay!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3be-Ai-iQe">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This is Joe Schmoe's tweet, yay!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3be-Ai-iQe">
-                                                    <frame key="frameInset" minX="98" minY="49" width="248" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="200" text="@joeschmoe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7g-Qf-S0h">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@joeschmoe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7g-Qf-S0h">
-                                                    <frame key="frameInset" minX="201" minY="8" width="99" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="15h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7B-JW-Vr1">
-                                                    <frame key="frameInset" minX="339" minY="8" width="28" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="900" text="· 15h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7B-JW-Vr1">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Q7B-JW-Vr1" firstAttribute="top" secondItem="wlZ-Cs-nJ8" secondAttribute="top" constant="8" id="0dX-1P-Uk7"/>
+                                                <constraint firstItem="w7g-Qf-S0h" firstAttribute="leading" secondItem="YUX-Aq-qjz" secondAttribute="trailing" constant="5" id="6c3-SQ-JL8"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="3be-Ai-iQe" secondAttribute="trailing" constant="8" id="C83-8P-J6G"/>
+                                                <constraint firstItem="3be-Ai-iQe" firstAttribute="leading" secondItem="ajD-wQ-1rb" secondAttribute="trailing" constant="8" id="I69-1B-3rc"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Q7B-JW-Vr1" secondAttribute="trailing" constant="8" id="Ov3-8T-Peu"/>
+                                                <constraint firstItem="Q7B-JW-Vr1" firstAttribute="leading" secondItem="w7g-Qf-S0h" secondAttribute="trailing" constant="5" id="R4f-e8-cxb"/>
+                                                <constraint firstItem="w7g-Qf-S0h" firstAttribute="top" secondItem="wlZ-Cs-nJ8" secondAttribute="top" constant="8" id="SRn-yB-w5u"/>
+                                                <constraint firstItem="ajD-wQ-1rb" firstAttribute="leading" secondItem="wlZ-Cs-nJ8" secondAttribute="leading" constant="8" id="SjH-nJ-tJm"/>
+                                                <constraint firstItem="YUX-Aq-qjz" firstAttribute="top" secondItem="wlZ-Cs-nJ8" secondAttribute="top" constant="8" id="XXn-rB-NBK"/>
+                                                <constraint firstItem="YUX-Aq-qjz" firstAttribute="leading" secondItem="ajD-wQ-1rb" secondAttribute="trailing" constant="8" id="XoI-9K-Zyz"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ajD-wQ-1rb" secondAttribute="bottom" constant="12" id="coV-ZL-aok"/>
+                                                <constraint firstItem="3be-Ai-iQe" firstAttribute="top" secondItem="YUX-Aq-qjz" secondAttribute="bottom" constant="5" id="qUX-dO-eEG"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3be-Ai-iQe" secondAttribute="bottom" constant="12" id="ueU-9q-3Xs"/>
+                                                <constraint firstItem="ajD-wQ-1rb" firstAttribute="top" secondItem="wlZ-Cs-nJ8" secondAttribute="top" constant="8" id="vjF-c9-dB4"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="name" destination="YUX-Aq-qjz" id="FvK-q0-mDB"/>

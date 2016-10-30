@@ -19,15 +19,26 @@ class TweetCell: UITableViewCell {
     var tweet: Tweet? {
         didSet {
             tweetText.text = tweet?.text
-            timestamp.text = "\(tweet?.timestamp!)"
+            
+            let formattedTimestamp = formatTimestamp(timestamp: tweet?.timestamp)
+            
+            timestamp.text = "· \(formattedTimestamp)"
             
             let user = tweet?.user
             
             name.text = user?.name
-            username.text = user?.screenname
+            username.text = "@\((user?.screenname)!)"
             
             profileImageView.setImageWith((user?.profileUrl)!)
         }
+    }
+    
+    func formatTimestamp(timestamp: Date?) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        
+        return dateFormatter.string(from: timestamp!)
     }
     
     override func awakeFromNib() {
