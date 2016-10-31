@@ -16,6 +16,8 @@ class CreateTweetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tweetTextView.layer.borderColor = UIColor.gray.cgColor
+        
 //        tweetTextView.text = "What's happening?"
 //        tweetTextView.textColor = UIColor.gray
 
@@ -38,14 +40,7 @@ class CreateTweetViewController: UIViewController {
         })
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func onBackButton(_ sender: AnyObject) {
+        navigationController?.popViewController(animated: true)
     }
-    */
-
 }

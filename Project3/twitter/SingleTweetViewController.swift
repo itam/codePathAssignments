@@ -53,6 +53,22 @@ class SingleTweetViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func onReplyButton(_ sender: AnyObject) {
+        
+    }
+
+    @IBAction func onRetweetButton(_ sender: AnyObject) {
+        TwitterClient.sharedInstance?.retweet(tweetId: (tweet?.tweetId)!, hasRetweeted: (tweet?.retweeted)!, success: nil, failure: nil)
+    }
+    
+    @IBAction func onFavoriteButton(_ sender: AnyObject) {
+        TwitterClient.sharedInstance?.favoriteTweet(tweetId: (tweet?.tweetId)!, isFavorited: (tweet?.favorited)!, success: { (tweet: Tweet) in
+            print("fave successful")
+            self.tweet = tweet
+            
+        }, failure: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

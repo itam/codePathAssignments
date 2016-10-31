@@ -111,4 +111,48 @@ class TwitterClient: BDBOAuth1SessionManager {
             failure(error)
         }
     }
+    
+    func replyToTweet() {
+    
+    }
+    
+    func retweet(tweetId: String, hasRetweeted: Bool, success: ((Tweet) -> ())?, failure: ((Error) -> ())?) {
+        
+        let endpoint: String = hasRetweeted ? "unretweet" : "retweet"
+        let retweetUrl = "1.1/statuses/\(endpoint)/\(tweetId).json"
+        let parameters = [
+            "id": tweetId
+        ]
+        
+        post(retweetUrl, parameters: parameters, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            
+            let tweet = Tweet(dictionary: response as! NSDictionary)
+            print("\(endpoint) successful")
+            success?(tweet)
+            
+        }) { (task: URLSessionDataTask?, error: Error) in
+            print("error retweeting: \(error.localizedDescription)")
+            failure?(error)
+        }
+    
+    }
+    
+    func favoriteTweet(tweetId: String, isFavorited: Bool, success: ((Tweet) -> ())?, failure: ((Error) -> ())?) {
+        
+        let endpoint: String = isFavorited ? "destroy" : "create"
+        let parameters = [
+            "id": tweetId
+        ]
+        
+        post("1.1/favorites/\(endpoint).json", parameters: parameters, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            
+            let tweet = Tweet(dictionary: response as! NSDictionary)
+            print("\(endpoint) successful")
+            success?(tweet)
+            
+        }) { (task: URLSessionDataTask?, error: Error) in
+            print("error favoriting: \(error.localizedDescription)")
+            failure?(error)
+        }
+    }
 }
