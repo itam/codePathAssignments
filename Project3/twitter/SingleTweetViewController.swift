@@ -20,6 +20,9 @@ class SingleTweetViewController: UIViewController {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var retweetButton: UIButton!
     
+    @IBOutlet weak var retweetCount: UILabel!
+    @IBOutlet weak var favoriteCount: UILabel!
+    
     var tweet: Tweet?
     
     override func viewDidLoad() {
@@ -37,7 +40,12 @@ class SingleTweetViewController: UIViewController {
         username.text = "@\((user?.screenname)!)"
         
         profileImageView.setImageWith((user?.profileUrl)!)
+        profileImageView.layer.cornerRadius = 5
+        profileImageView.clipsToBounds = true
         
+        setCount(type: "retweet")
+        setCount(type: "favorite")
+
         toggleFavoriteIcon()
         toggleRetweetIcon()
     }
@@ -53,6 +61,14 @@ class SingleTweetViewController: UIViewController {
         dateFormatter.dateStyle = .short
         
         return dateFormatter.string(from: timestamp!)
+    }
+    
+    func setCount(type: String?)  {
+        let countString = type == "retweet" ? "\((tweet?.retweetCount)!) RETWEETS" : "\((tweet?.favoriteCount)!) LIKES"
+        
+        let label = type == "retweet" ? retweetCount : favoriteCount
+        
+        label?.text = ("\(countString)")
     }
     
     func toggleFavoriteIcon() {
@@ -90,6 +106,7 @@ class SingleTweetViewController: UIViewController {
         TwitterClient.sharedInstance?.retweet(tweetId: (tweet?.tweetId)!, hasRetweeted: (tweet?.retweeted)!, success: { (tweet: Tweet) in
             
             self.tweet = tweet
+            self.setCount(type: "retweet")
             self.toggleRetweetIcon()
             
         }, failure: nil)
@@ -100,19 +117,9 @@ class SingleTweetViewController: UIViewController {
         TwitterClient.sharedInstance?.favoriteTweet(tweetId: (tweet?.tweetId)!, isFavorited: (tweet?.favorited)!, success: { (tweet: Tweet) in
             
             self.tweet = tweet
+            self.setCount(type: "favorite")
             self.toggleFavoriteIcon()
             
         }, failure: nil)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

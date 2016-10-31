@@ -305,11 +305,28 @@
                                             <action selector="onRetweetButton:" destination="lbU-dT-AaN" eventType="touchUpInside" id="9mZ-4p-Kvl"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZOk-PB-un9">
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="6j4-Fc-rRG"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 RETWEET" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNp-ug-146">
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 LIKES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogO-Ok-yQx">
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="5tA-7u-X7z" firstAttribute="leading" secondItem="Rv5-P9-42h" secondAttribute="leading" constant="12" id="0Af-kA-hE0"/>
                                     <constraint firstItem="uhB-fQ-TXh" firstAttribute="leading" secondItem="Rv5-P9-42h" secondAttribute="leading" constant="12" id="2YH-OH-8v7"/>
+                                    <constraint firstItem="uNp-ug-146" firstAttribute="top" secondItem="ZOk-PB-un9" secondAttribute="bottom" constant="12" id="2zA-Xp-n2h"/>
                                     <constraint firstItem="XXW-gg-RMl" firstAttribute="leading" secondItem="uhB-fQ-TXh" secondAttribute="trailing" constant="8" id="3Bv-7Y-d80"/>
                                     <constraint firstItem="bgw-2v-JXt" firstAttribute="top" secondItem="nj1-We-lkf" secondAttribute="bottom" constant="12" id="4md-bE-Pj4"/>
                                     <constraint firstItem="Lws-x7-FY8" firstAttribute="top" secondItem="p3b-gM-sj7" secondAttribute="bottom" constant="12" id="5tP-hL-03f"/>
@@ -317,16 +334,22 @@
                                     <constraint firstItem="5tA-7u-X7z" firstAttribute="top" secondItem="k5i-2U-GrY" secondAttribute="bottom" constant="8" id="7fe-EH-qMH"/>
                                     <constraint firstItem="p3b-gM-sj7" firstAttribute="top" secondItem="nj1-We-lkf" secondAttribute="bottom" constant="12" id="8W8-JC-5IX"/>
                                     <constraint firstItem="uhB-fQ-TXh" firstAttribute="top" secondItem="Rv5-P9-42h" secondAttribute="top" constant="12" id="90b-5h-1hR"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZOk-PB-un9" secondAttribute="trailing" constant="12" id="DcA-AN-M2Y"/>
+                                    <constraint firstItem="ogO-Ok-yQx" firstAttribute="leading" secondItem="uNp-ug-146" secondAttribute="trailing" constant="14" id="EzW-6d-I0u"/>
+                                    <constraint firstItem="ZOk-PB-un9" firstAttribute="top" secondItem="5tA-7u-X7z" secondAttribute="bottom" constant="8" id="F8m-b1-uhJ"/>
+                                    <constraint firstItem="ZOk-PB-un9" firstAttribute="leading" secondItem="Rv5-P9-42h" secondAttribute="leading" constant="12" id="Hn3-2M-pjC"/>
+                                    <constraint firstItem="nj1-We-lkf" firstAttribute="top" secondItem="ogO-Ok-yQx" secondAttribute="bottom" constant="12" id="LFG-EN-KQW"/>
                                     <constraint firstItem="Lws-x7-FY8" firstAttribute="leading" secondItem="Rv5-P9-42h" secondAttribute="leading" constant="12" id="Nf7-UG-ZkF"/>
                                     <constraint firstItem="k5i-2U-GrY" firstAttribute="top" secondItem="uhB-fQ-TXh" secondAttribute="bottom" constant="12" id="OIA-sW-W6l"/>
                                     <constraint firstItem="k5i-2U-GrY" firstAttribute="leading" secondItem="Rv5-P9-42h" secondAttribute="leading" constant="12" id="PZE-BR-bV5"/>
                                     <constraint firstItem="nj1-We-lkf" firstAttribute="leading" secondItem="Rv5-P9-42h" secondAttribute="leading" constant="12" id="RFP-gc-Rkg"/>
                                     <constraint firstItem="bgw-2v-JXt" firstAttribute="leading" secondItem="nj1-We-lkf" secondAttribute="leading" id="SiC-RM-dxN"/>
-                                    <constraint firstItem="nj1-We-lkf" firstAttribute="top" secondItem="5tA-7u-X7z" secondAttribute="bottom" constant="24" id="gw0-QW-i6f"/>
                                     <constraint firstItem="C16-J3-EPW" firstAttribute="top" secondItem="nj1-We-lkf" secondAttribute="bottom" constant="12" id="idE-b4-8Rq"/>
+                                    <constraint firstItem="uNp-ug-146" firstAttribute="leading" secondItem="Rv5-P9-42h" secondAttribute="leading" constant="12" id="kIY-0J-BGb"/>
                                     <constraint firstItem="C16-J3-EPW" firstAttribute="trailing" secondItem="nj1-We-lkf" secondAttribute="trailing" id="mHO-At-uiF"/>
                                     <constraint firstItem="p3b-gM-sj7" firstAttribute="centerX" secondItem="Rv5-P9-42h" secondAttribute="centerX" id="mkW-PL-oTd"/>
                                     <constraint firstItem="awi-ve-LWS" firstAttribute="top" secondItem="Rv5-P9-42h" secondAttribute="top" constant="12" id="qVg-V1-2QW"/>
+                                    <constraint firstItem="ogO-Ok-yQx" firstAttribute="top" secondItem="ZOk-PB-un9" secondAttribute="bottom" constant="12" id="tFp-TY-dnN"/>
                                     <constraint firstItem="XXW-gg-RMl" firstAttribute="top" secondItem="awi-ve-LWS" secondAttribute="bottom" constant="4" id="ty6-zS-QfB"/>
                                     <constraint firstItem="awi-ve-LWS" firstAttribute="leading" secondItem="uhB-fQ-TXh" secondAttribute="trailing" constant="8" id="uO5-xB-ATc"/>
                                     <constraint firstAttribute="trailing" secondItem="nj1-We-lkf" secondAttribute="trailing" constant="12" id="xYF-Jl-4Wx"/>
@@ -351,9 +374,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="favoriteButton" destination="C16-J3-EPW" id="VQx-u9-Hgm"/>
+                        <outlet property="favoriteCount" destination="ogO-Ok-yQx" id="z9Y-g8-PYD"/>
                         <outlet property="name" destination="awi-ve-LWS" id="uOb-Wb-p3E"/>
                         <outlet property="profileImageView" destination="uhB-fQ-TXh" id="vg1-xi-efV"/>
                         <outlet property="retweetButton" destination="p3b-gM-sj7" id="Rj7-l5-gpp"/>
+                        <outlet property="retweetCount" destination="uNp-ug-146" id="xJE-1E-d8F"/>
                         <outlet property="timestamp" destination="5tA-7u-X7z" id="3cd-Xw-bRR"/>
                         <outlet property="tweetText" destination="k5i-2U-GrY" id="q5f-hb-5AY"/>
                         <outlet property="username" destination="XXW-gg-RMl" id="i5e-wO-Arc"/>

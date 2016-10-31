@@ -30,6 +30,8 @@ class TweetCell: UITableViewCell {
             username.text = "@\((user?.screenname)!)"
             
             profileImageView.setImageWith((user?.profileUrl)!)
+            profileImageView.layer.cornerRadius = 5
+            profileImageView.clipsToBounds = true
         }
     }
     

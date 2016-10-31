@@ -42,14 +42,6 @@ class CreateTweetViewController: UIViewController {
         let tweet = tweetTextView.text!
         
         TwitterClient.sharedInstance?.createTweet(tweet: tweet, replyToId: replyToId, success: { (tweet: Tweet) in
-//            let tweetsViewController = self.storyboard?.instantiateViewController(withIdentifier: "TweetsViewController") as? TweetsViewController
-            
-//            var newTweets = [Tweet]()
-//            
-//            newTweets.append(tweetsViewController?.tweets?)
-//            newTweets.append(tweet)
-            
-//            tweetsViewController?.tweets = newTweets
             
             self.navigationController?.popViewController(animated: true)
         

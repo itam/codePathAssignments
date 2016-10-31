@@ -116,10 +116,6 @@ class TwitterClient: BDBOAuth1SessionManager {
         }
     }
     
-    func replyToTweet() {
-    
-    }
-    
     func retweet(tweetId: String, hasRetweeted: Bool, success: ((Tweet) -> ())?, failure: ((Error) -> ())?) {
         
         let endpoint: String = hasRetweeted ? "unretweet" : "retweet"
