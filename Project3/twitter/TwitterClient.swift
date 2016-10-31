@@ -96,10 +96,14 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
-    func createTweet(tweet: String?, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {
-        let parameters = [
+    func createTweet(tweet: String?, replyToId: String?, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {
+        var parameters = [
             "status": tweet!
         ]
+        
+        if replyToId != nil {
+            parameters["in_reply_to_status_id"] = replyToId
+        }
         
         post("1.1/statuses/update.json", parameters: parameters, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
             

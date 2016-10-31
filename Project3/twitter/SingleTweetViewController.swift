@@ -54,7 +54,11 @@ class SingleTweetViewController: UIViewController {
     }
     
     @IBAction func onReplyButton(_ sender: AnyObject) {
+        let createTweetViewController = self.storyboard?.instantiateViewController(withIdentifier: "CreateTweetViewController") as? CreateTweetViewController
         
+        createTweetViewController?.replyToId = tweet?.tweetId
+        
+        navigationController?.pushViewController(createTweetViewController!, animated: true)
     }
 
     @IBAction func onRetweetButton(_ sender: AnyObject) {

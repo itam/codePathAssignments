@@ -13,6 +13,8 @@ class CreateTweetViewController: UIViewController {
     @IBOutlet weak var tweetTextView: UITextView!
     @IBOutlet weak var tweetButton: UIButton!
     
+    var replyToId: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,7 +34,7 @@ class CreateTweetViewController: UIViewController {
     @IBAction func onTweetButton(_ sender: AnyObject) {
         let tweet = tweetTextView.text!
         
-        TwitterClient.sharedInstance?.createTweet(tweet: tweet, success: { (tweet: Tweet) in
+        TwitterClient.sharedInstance?.createTweet(tweet: tweet, replyToId: replyToId, success: { (tweet: Tweet) in
             self.navigationController?.popViewController(animated: true)
         
         }, failure: { (error: Error) in
