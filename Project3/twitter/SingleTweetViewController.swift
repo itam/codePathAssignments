@@ -17,6 +17,9 @@ class SingleTweetViewController: UIViewController {
     
     @IBOutlet weak var profileImageView: UIImageView!
     
+    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var retweetButton: UIButton!
+    
     var tweet: Tweet?
     
     override func viewDidLoad() {
@@ -34,6 +37,9 @@ class SingleTweetViewController: UIViewController {
         username.text = "@\((user?.screenname)!)"
         
         profileImageView.setImageWith((user?.profileUrl)!)
+        
+        toggleFavoriteIcon()
+        toggleRetweetIcon()
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +54,24 @@ class SingleTweetViewController: UIViewController {
         
         return dateFormatter.string(from: timestamp!)
     }
+    
+    func toggleFavoriteIcon() {
+        if (tweet?.favorited)! {
+            let favoriteImageView = favoriteButton.imageView
+            
+            favoriteImageView?.image = favoriteImageView?.image?.withRenderingMode(.alwaysTemplate)
+            favoriteImageView?.tintColor = UIColor.red
+        }
+    }
+    
+    func toggleRetweetIcon()  {
+        if (tweet?.retweeted)! {
+            let retweetImageView = retweetButton.imageView
+            
+            retweetImageView?.image = retweetImageView?.image?.withRenderingMode(.alwaysTemplate)
+            retweetImageView?.tintColor = UIColor.green
+        }
+    }
 
     @IBAction func onBackButton(_ sender: AnyObject) {
         navigationController?.popViewController(animated: true)
@@ -57,18 +81,26 @@ class SingleTweetViewController: UIViewController {
         let createTweetViewController = self.storyboard?.instantiateViewController(withIdentifier: "CreateTweetViewController") as? CreateTweetViewController
         
         createTweetViewController?.replyToId = tweet?.tweetId
+        createTweetViewController?.replyToUsername = tweet?.user?.screenname
         
         navigationController?.pushViewController(createTweetViewController!, animated: true)
     }
 
     @IBAction func onRetweetButton(_ sender: AnyObject) {
-        TwitterClient.sharedInstance?.retweet(tweetId: (tweet?.tweetId)!, hasRetweeted: (tweet?.retweeted)!, success: nil, failure: nil)
+        TwitterClient.sharedInstance?.retweet(tweetId: (tweet?.tweetId)!, hasRetweeted: (tweet?.retweeted)!, success: { (tweet: Tweet) in
+            
+            self.tweet = tweet
+            self.toggleRetweetIcon()
+            
+        }, failure: nil)
+
     }
     
     @IBAction func onFavoriteButton(_ sender: AnyObject) {
         TwitterClient.sharedInstance?.favoriteTweet(tweetId: (tweet?.tweetId)!, isFavorited: (tweet?.favorited)!, success: { (tweet: Tweet) in
-            print("fave successful")
+            
             self.tweet = tweet
+            self.toggleFavoriteIcon()
             
         }, failure: nil)
     }

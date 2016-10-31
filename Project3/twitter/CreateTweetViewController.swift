@@ -14,16 +14,23 @@ class CreateTweetViewController: UIViewController {
     @IBOutlet weak var tweetButton: UIButton!
     
     var replyToId: String?
+    var replyToUsername: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tweetTextView.layer.borderColor = UIColor.gray.cgColor
+        tweetTextView.layer.borderColor = UIColor.lightGray.cgColor
+        tweetTextView.layer.borderWidth = 1
+        
+        // Prevent text edit from starting in the middle of the text view.
+        self.automaticallyAdjustsScrollViewInsets = false
+        
+        if let username = replyToUsername {
+            tweetTextView.text = "@\(username) "
+        }
         
 //        tweetTextView.text = "What's happening?"
 //        tweetTextView.textColor = UIColor.gray
-
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,6 +42,15 @@ class CreateTweetViewController: UIViewController {
         let tweet = tweetTextView.text!
         
         TwitterClient.sharedInstance?.createTweet(tweet: tweet, replyToId: replyToId, success: { (tweet: Tweet) in
+//            let tweetsViewController = self.storyboard?.instantiateViewController(withIdentifier: "TweetsViewController") as? TweetsViewController
+            
+//            var newTweets = [Tweet]()
+//            
+//            newTweets.append(tweetsViewController?.tweets?)
+//            newTweets.append(tweet)
+            
+//            tweetsViewController?.tweets = newTweets
+            
             self.navigationController?.popViewController(animated: true)
         
         }, failure: { (error: Error) in
