@@ -29,12 +29,15 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
         
-        TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) in
-            self.tweets = tweets
-            self.tableView.reloadData()
-        }, failure: { (error: Error) in
-            print("error loading timeline: \(error.localizedDescription)")
-        })
+        if self.tweets == nil {
+            TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) in
+                print("setting tweets")
+                self.tweets = tweets
+                self.tableView.reloadData()
+            }, failure: { (error: Error) in
+                print("error loading timeline: \(error.localizedDescription)")
+            })
+        }
         // Do any additional setup after loading the view.
     }
 
