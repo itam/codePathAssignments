@@ -21,6 +21,10 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var followingCountLabel: UILabel!
     @IBOutlet weak var followerCountLabel: UILabel!
     
+    @IBOutlet weak var tweetsTableView: UIView!
+    
+    var tweetsViewController: TweetsViewController!
+    
     var user: User! {
         didSet {
             print("set user")
@@ -28,7 +32,10 @@ class ProfileViewController: UIViewController {
             view.layoutIfNeeded()
             
             if user.profileBackgroundUrl != nil {
+            
                 profileBackgroundImageView.setImageWith(user.profileBackgroundUrl!)
+                profileBackgroundImageView.autoresizingMask =  UIViewAutoresizing.flexibleHeight
+                profileBackgroundImageView.contentMode = UIViewContentMode.scaleToFill
             }
             
             profileImageView.setImageWith(user.profileUrl!)
@@ -56,6 +63,24 @@ class ProfileViewController: UIViewController {
             
             navigationController?.isNavigationBarHidden = true
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        tweetsViewController = storyboard?.instantiateViewController(withIdentifier: "TweetsViewController") as! TweetsViewController
+        
+        TwitterClient.sharedInstance?.getUserTweets(screenname: user.screenname!, success: { (tweets: [Tweet]) in
+            print("set user tweets")
+            self.tweetsViewController.tweets = tweets
+            
+            self.tweetsViewController.willMove(toParentViewController: self)
+            self.tweetsTableView.addSubview(self.tweetsViewController.view)
+            self.tweetsViewController.didMove(toParentViewController: self)
+            
+            }, failure: { (error: Error) in
+                print("error: \(error.localizedDescription)")
+        })
     }
 
     override func didReceiveMemoryWarning() {

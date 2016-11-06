@@ -197,6 +197,10 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VIq-Jx-9J5">
+                                        <frame key="frameInset" minY="323" width="375" height="280"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -208,6 +212,7 @@
                                     <constraint firstItem="nbK-5P-6IZ" firstAttribute="leading" secondItem="Y9Z-Yq-U2Q" secondAttribute="leading" constant="12" id="BAo-oB-T14"/>
                                     <constraint firstItem="oGm-7b-ZCB" firstAttribute="leading" secondItem="Y9Z-Yq-U2Q" secondAttribute="leading" constant="24" id="BVt-L0-EQU"/>
                                     <constraint firstItem="AJb-3U-SKI" firstAttribute="top" secondItem="oGm-7b-ZCB" secondAttribute="bottom" constant="12" id="Cit-MM-efn"/>
+                                    <constraint firstItem="VIq-Jx-9J5" firstAttribute="leading" secondItem="Y9Z-Yq-U2Q" secondAttribute="leading" id="HDt-Oe-6fU"/>
                                     <constraint firstAttribute="trailing" secondItem="jHl-tL-pUN" secondAttribute="trailing" id="J0P-tf-zhL"/>
                                     <constraint firstItem="AJb-3U-SKI" firstAttribute="leading" secondItem="Y9Z-Yq-U2Q" secondAttribute="leading" constant="12" id="J3z-KO-3RV"/>
                                     <constraint firstItem="5Mk-gv-UJk" firstAttribute="top" secondItem="bP5-TD-PMg" secondAttribute="bottom" constant="12" id="Klc-EK-5XA"/>
@@ -215,9 +220,12 @@
                                     <constraint firstItem="Gv2-wd-10m" firstAttribute="leading" secondItem="5Mk-gv-UJk" secondAttribute="trailing" constant="12" id="Mkv-qx-DBP"/>
                                     <constraint firstItem="jHl-tL-pUN" firstAttribute="top" secondItem="Y9Z-Yq-U2Q" secondAttribute="top" id="UQE-NJ-OhA"/>
                                     <constraint firstItem="bP5-TD-PMg" firstAttribute="top" secondItem="nbK-5P-6IZ" secondAttribute="bottom" constant="12" id="ZaE-35-f4h"/>
+                                    <constraint firstItem="VIq-Jx-9J5" firstAttribute="top" secondItem="6a7-JE-Zfz" secondAttribute="bottom" constant="80" id="j61-qY-wa8"/>
                                     <constraint firstItem="bP5-TD-PMg" firstAttribute="leading" secondItem="Y9Z-Yq-U2Q" secondAttribute="leading" constant="12" id="mxS-TR-6t1"/>
                                     <constraint firstItem="6a7-JE-Zfz" firstAttribute="top" secondItem="bP5-TD-PMg" secondAttribute="bottom" constant="12" id="rpP-1G-gLv"/>
                                     <constraint firstItem="jHl-tL-pUN" firstAttribute="leading" secondItem="Y9Z-Yq-U2Q" secondAttribute="leading" id="siy-0h-CDq"/>
+                                    <constraint firstAttribute="trailing" secondItem="VIq-Jx-9J5" secondAttribute="trailing" id="vs8-0a-7uX"/>
+                                    <constraint firstAttribute="bottom" secondItem="VIq-Jx-9J5" secondAttribute="bottom" id="wO5-fq-Giv"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -244,6 +252,7 @@
                         <outlet property="profileBackgroundImageView" destination="jHl-tL-pUN" id="PKj-ic-ZrO"/>
                         <outlet property="profileImageView" destination="oGm-7b-ZCB" id="6N5-tg-HuF"/>
                         <outlet property="tweetCountLabel" destination="5Mk-gv-UJk" id="NHM-sm-Ikq"/>
+                        <outlet property="tweetsTableView" destination="VIq-Jx-9J5" id="8jm-qb-8bJ"/>
                         <outlet property="usernameLabel" destination="nbK-5P-6IZ" id="i0m-po-x6Q"/>
                     </connections>
                 </viewController>

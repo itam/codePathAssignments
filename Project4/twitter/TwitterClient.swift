@@ -82,15 +82,15 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
     
     func homeTimeline(success: (([Tweet]) -> ())?, failure:  ((Error) -> ())?) {
-        getTimeline(type: "home", success: success, failure: failure)
+        getTimeline(type: "home", parameters: nil, success: success, failure: failure)
     }
     
     func mentionsTimeline(success: (([Tweet]) -> ())?, failure:  ((Error) -> ())?) {
-        getTimeline(type: "mentions", success: success, failure: failure)
+        getTimeline(type: "mentions", parameters: nil, success: success, failure: failure)
     }
     
-    func getTimeline(type: String, success: (([Tweet]) -> ())?, failure: ((Error) -> ())?) {
-        get("1.1/statuses/\(type)_timeline.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+    func getTimeline(type: String, parameters: [String: Any]?, success: (([Tweet]) -> ())?, failure: ((Error) -> ())?) {
+        get("1.1/statuses/\(type)_timeline.json", parameters: parameters, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
             let dictionaries = response as! [NSDictionary]
             
             let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)
@@ -101,6 +101,14 @@ class TwitterClient: BDBOAuth1SessionManager {
                 print("error in \(type)Timeline")
                 failure!(error)
         })
+    }
+    
+    func getUserTweets(screenname: String, success: (([Tweet]) -> ())?, failure: ((Error) -> ())?) {
+        let parameters = [
+            "screen_name": screenname
+        ]
+        
+        getTimeline(type: "user", parameters: parameters, success: success, failure: failure)
     }
     
     func createTweet(tweet: String?, replyToId: String?, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {

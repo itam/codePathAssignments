@@ -33,7 +33,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // Check if we actually need new tweets, otherwise we hit the rate limit REALLY quickly.
         if self.tweets == nil {
-            TwitterClient.sharedInstance?.getTimeline(type: endpoint!, success: { (tweets: [Tweet]) in
+            TwitterClient.sharedInstance?.getTimeline(type: endpoint!, parameters: nil, success: { (tweets: [Tweet]) in
                 print("setting \((self.endpoint)!) tweets")
                 self.tweets = tweets
                 self.tableView.reloadData()

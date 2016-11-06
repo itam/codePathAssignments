@@ -1,6 +1,6 @@
 # Project 4 - *Twitter Redux*
 
-Time spent: **10** hours spent in total
+Time spent: **11** hours spent in total
 
 ## User Stories
 
