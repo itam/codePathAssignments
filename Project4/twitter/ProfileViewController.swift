@@ -33,8 +33,14 @@ class ProfileViewController: UIViewController {
             
             profileImageView.setImageWith(user.profileUrl!)
             
+            // Style the profile image
+            profileImageView.layer.cornerRadius = 5
+            profileImageView.clipsToBounds = true
+            profileImageView.layer.borderWidth = 5
+            profileImageView.layer.borderColor = UIColor.white.cgColor
+            
             nameLabel.text = user.name
-            usernameLabel.text = user.screenname
+            usernameLabel.text = "@\((user.screenname)!)"
             descriptionLabel.text = user.tagline
             tweetCountLabel.text = "\((user.tweetCount)!) TWEETS"
             followingCountLabel.text = "\((user.followingCount)!) FOLLOWING"

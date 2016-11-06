@@ -46,8 +46,8 @@ class User: NSObject {
         tagline = dictionary["description"] as? String
         
         tweetCount = dictionary["statuses_count"] as? Int ?? 0
-        followerCount = dictionary["follower_count"] as? Int ?? 0
-        followingCount = dictionary["friend_count"] as? Int ?? 0
+        followerCount = dictionary["followers_count"] as? Int ?? 0
+        followingCount = dictionary["friends_count"] as? Int ?? 0
     }
     
     static var _currentUser: User?

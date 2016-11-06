@@ -103,16 +103,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SeE-Wm-ktC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SeE-Wm-ktC">
                                 <frame key="frameInset" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCell" id="AzU-QA-ipB" customClass="MenuCell" customModule="twitter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AzU-QA-ipB" id="YGe-0S-1L1">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Menu item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDL-1u-Dfz">
@@ -214,7 +214,7 @@
                             <constraint firstItem="5Mk-gv-UJk" firstAttribute="leading" secondItem="42l-LF-urC" secondAttribute="leading" constant="12" id="fOM-6J-NN1"/>
                             <constraint firstItem="AJb-3U-SKI" firstAttribute="leading" secondItem="42l-LF-urC" secondAttribute="leading" constant="12" id="jC7-F2-Hwu"/>
                             <constraint firstItem="bP5-TD-PMg" firstAttribute="leading" secondItem="42l-LF-urC" secondAttribute="leading" constant="12" id="rxY-2b-Zwq"/>
-                            <constraint firstItem="oGm-7b-ZCB" firstAttribute="top" secondItem="rYH-hx-3UT" secondAttribute="bottom" constant="70" id="ub4-vE-WmW"/>
+                            <constraint firstItem="oGm-7b-ZCB" firstAttribute="top" secondItem="rYH-hx-3UT" secondAttribute="bottom" constant="60" id="ub4-vE-WmW"/>
                             <constraint firstItem="5Mk-gv-UJk" firstAttribute="top" secondItem="bP5-TD-PMg" secondAttribute="bottom" constant="12" id="wiC-gC-bKV"/>
                         </constraints>
                     </view>
