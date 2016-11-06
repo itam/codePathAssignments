@@ -15,7 +15,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     var viewControllers: [UIViewController] = []
     var hamburgerViewController: HamburgerViewController!
     
-    let menuTitles = ["Tweets"]
+    let menuTitles = ["Tweets", "Profile"]
     
     private var tweetsViewController: UIViewController!
     private var profileViewController: UIViewController!
@@ -30,8 +30,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         tweetsViewController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
+        profileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController")
         
         viewControllers.append(tweetsViewController)
+        viewControllers.append(profileViewController)
         
         hamburgerViewController.contentViewController = tweetsViewController
     }
@@ -43,7 +45,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewControllers.count
     }
     
     
@@ -59,7 +61,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        hamburgerViewController.contentViewController = viewControllers[indexPath.row]
+        var newViewController = viewControllers[indexPath.row]
+        
+        hamburgerViewController.contentViewController = newViewController
     }
     
 

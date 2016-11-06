@@ -29,6 +29,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
         
+        // Check if we actually need new tweets, otherwise we hit the rate limit REALLY quickly.
         if self.tweets == nil {
             TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) in
                 print("setting tweets")
