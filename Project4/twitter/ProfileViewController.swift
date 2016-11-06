@@ -53,6 +53,8 @@ class ProfileViewController: UIViewController {
         
         if user == nil {
             user = User.currentUser
+            
+            navigationController?.isNavigationBarHidden = true
         }
     }
 
@@ -61,6 +63,9 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onBackButton(_ sender: AnyObject) {
+        navigationController?.popViewController(animated: true)
+    }
 
     /*
     // MARK: - Navigation
