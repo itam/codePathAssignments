@@ -15,11 +15,11 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     var viewControllers: [UIViewController] = []
     var hamburgerViewController: HamburgerViewController!
     
-    let menuTitles = ["Tweets", "Profile"]
+    let menuTitles = ["Tweets", "Profile", "Mentions"]
     
     private var tweetsViewController: UIViewController!
     private var profileViewController: UIViewController!
-    private var mentionsViewController: UIViewController!
+    private var mentionsViewController: TweetsViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +32,16 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         tweetsViewController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
         profileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController")
         
+        
+        let mentionsNavigationController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController") as! UINavigationController
+        
+        mentionsViewController = mentionsNavigationController.topViewController as! TweetsViewController
+        
+        mentionsViewController.endpoint = "mentions"
+        
         viewControllers.append(tweetsViewController)
         viewControllers.append(profileViewController)
+        viewControllers.append(mentionsNavigationController)
         
         hamburgerViewController.contentViewController = tweetsViewController
     }
@@ -60,10 +68,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        var newViewController = viewControllers[indexPath.row]
-        
-        hamburgerViewController.contentViewController = newViewController
+
+        hamburgerViewController.contentViewController = viewControllers[indexPath.row]
     }
     
 

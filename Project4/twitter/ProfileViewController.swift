@@ -25,6 +25,8 @@ class ProfileViewController: UIViewController {
         didSet {
             print("set user")
             
+            view.layoutIfNeeded()
+            
             if user.profileBackgroundUrl != nil {
                 profileBackgroundImageView.setImageWith(user.profileBackgroundUrl!)
             }
@@ -46,8 +48,6 @@ class ProfileViewController: UIViewController {
         if user == nil {
             user = User.currentUser
         }
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

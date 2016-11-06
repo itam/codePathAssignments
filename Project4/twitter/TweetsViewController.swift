@@ -12,6 +12,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var tableView: UITableView!
     
+    var endpoint: String? = "home"
+    
     var tweets: [Tweet]?
     let refreshControl = UIRefreshControl()
 
@@ -31,15 +33,14 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // Check if we actually need new tweets, otherwise we hit the rate limit REALLY quickly.
         if self.tweets == nil {
-            TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) in
-                print("setting tweets")
+            TwitterClient.sharedInstance?.getTimeline(type: endpoint!, success: { (tweets: [Tweet]) in
+                print("setting \((self.endpoint)!) tweets")
                 self.tweets = tweets
                 self.tableView.reloadData()
             }, failure: { (error: Error) in
                 print("error loading timeline: \(error.localizedDescription)")
             })
         }
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,7 +57,18 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         cell?.tweet = tweets?[indexPath.row]
         
+        // Add ability to tap profile image to launch full profile
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapProfileImage(sender:)))
+        
+        cell?.profileImageView.isUserInteractionEnabled = true
+        cell?.profileImageView.addGestureRecognizer(tapGestureRecognizer)
+        
         return cell!
+    }
+    
+    func didTapProfileImage(sender: UITapGestureRecognizer) {
+
+        self.performSegue(withIdentifier: "profileSegue", sender: sender)
     }
     
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
@@ -81,6 +93,14 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             destinationViewController?.tweet = tweet
             
             self.tableView.deselectRow(at: indexPath!, animated:true)
+        } else if segue.identifier == "profileSegue" {
+            let gestureRecognizer = sender as! UITapGestureRecognizer
+            
+            let locationInView = gestureRecognizer.location(in: self.tableView)
+            if let indexPath = self.tableView.indexPathForRow(at: locationInView) {
+                let destinationViewController = segue.destination as? ProfileViewController
+                destinationViewController?.user = tweets![indexPath.row].user!
+            }
         }
     }
     

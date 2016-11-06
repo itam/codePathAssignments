@@ -154,58 +154,69 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jHl-tL-pUN">
-                                <frame key="frameInset" width="375" height="156"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jHl-tL-pUN">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="DP3-FR-BeK"/>
+                                </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oGm-7b-ZCB">
-                                <frame key="frameInset" minX="13" minY="103" width="118" height="120"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oGm-7b-ZCB">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="3sD-W7-dMN"/>
+                                    <constraint firstAttribute="height" constant="60" id="huO-3v-F5d"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Joe Schmoe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJb-3U-SKI">
-                                <frame key="frameInset" minX="13" minY="231" width="95" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Joe Schmoe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJb-3U-SKI">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@joeschmoe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbK-5P-6IZ">
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I'm Joe Schmoe, blah blah blah." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bP5-TD-PMg">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@joeschmoe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbK-5P-6IZ">
-                                <frame key="frameInset" minX="13" minY="260" width="99" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="400 FOLLOWING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6a7-JE-Zfz">
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I'm Joe Schmoe, blah blah blah." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bP5-TD-PMg">
-                                <frame key="frameInset" minX="13" minY="289" width="243" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12384 TWEETS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Mk-gv-UJk">
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="400 FOLLOWERS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gv2-wd-10m">
-                                <frame key="frameInset" minX="168" minY="348" width="135" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="400 FOLLOWING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6a7-JE-Zfz">
-                                <frame key="frameInset" minX="13" minY="348" width="133" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="12384 TWEETS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Mk-gv-UJk">
-                                <frame key="frameInset" minX="13" minY="323" width="120" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="400 FOLLOWERS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gv2-wd-10m">
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bP5-TD-PMg" secondAttribute="trailing" constant="12" id="4XS-r4-9Zv"/>
+                            <constraint firstItem="oGm-7b-ZCB" firstAttribute="leading" secondItem="42l-LF-urC" secondAttribute="leading" constant="24" id="6hn-dc-g4y"/>
+                            <constraint firstItem="bP5-TD-PMg" firstAttribute="top" secondItem="nbK-5P-6IZ" secondAttribute="bottom" constant="12" id="7dc-ct-na8"/>
+                            <constraint firstItem="nbK-5P-6IZ" firstAttribute="leading" secondItem="42l-LF-urC" secondAttribute="leading" constant="12" id="BLu-Yh-ED2"/>
+                            <constraint firstItem="jHl-tL-pUN" firstAttribute="top" secondItem="42l-LF-urC" secondAttribute="top" id="Ekh-vQ-YaY"/>
+                            <constraint firstAttribute="trailing" secondItem="jHl-tL-pUN" secondAttribute="trailing" id="GBd-fK-fPB"/>
+                            <constraint firstItem="Gv2-wd-10m" firstAttribute="top" secondItem="bP5-TD-PMg" secondAttribute="bottom" constant="12" id="KSA-G6-F0L"/>
+                            <constraint firstItem="jHl-tL-pUN" firstAttribute="leading" secondItem="42l-LF-urC" secondAttribute="leading" id="Ofq-Pa-0Y3"/>
+                            <constraint firstItem="6a7-JE-Zfz" firstAttribute="leading" secondItem="5Mk-gv-UJk" secondAttribute="trailing" constant="12" id="VLr-Hu-lZE"/>
+                            <constraint firstItem="AJb-3U-SKI" firstAttribute="top" secondItem="oGm-7b-ZCB" secondAttribute="bottom" constant="12" id="Xgp-QN-Uw8"/>
+                            <constraint firstItem="nbK-5P-6IZ" firstAttribute="top" secondItem="AJb-3U-SKI" secondAttribute="bottom" constant="4" id="Zng-rF-pd7"/>
+                            <constraint firstItem="6a7-JE-Zfz" firstAttribute="top" secondItem="bP5-TD-PMg" secondAttribute="bottom" constant="12" id="ati-TI-1ma"/>
+                            <constraint firstItem="Gv2-wd-10m" firstAttribute="leading" secondItem="6a7-JE-Zfz" secondAttribute="trailing" constant="12" id="ezL-wM-Fps"/>
+                            <constraint firstItem="5Mk-gv-UJk" firstAttribute="leading" secondItem="42l-LF-urC" secondAttribute="leading" constant="12" id="fOM-6J-NN1"/>
+                            <constraint firstItem="AJb-3U-SKI" firstAttribute="leading" secondItem="42l-LF-urC" secondAttribute="leading" constant="12" id="jC7-F2-Hwu"/>
+                            <constraint firstItem="bP5-TD-PMg" firstAttribute="leading" secondItem="42l-LF-urC" secondAttribute="leading" constant="12" id="rxY-2b-Zwq"/>
+                            <constraint firstItem="oGm-7b-ZCB" firstAttribute="top" secondItem="rYH-hx-3UT" secondAttribute="bottom" constant="70" id="ub4-vE-WmW"/>
+                            <constraint firstItem="5Mk-gv-UJk" firstAttribute="top" secondItem="bP5-TD-PMg" secondAttribute="bottom" constant="12" id="wiC-gC-bKV"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="descriptionLabel" destination="bP5-TD-PMg" id="53j-hx-VPD"/>
@@ -220,7 +231,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a0t-uY-r3d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1733.5999999999999" y="973.76311844077964"/>
+            <point key="canvasLocation" x="1517.5999999999999" y="787.55622188905556"/>
         </scene>
         <!--Tweets View Controller-->
         <scene sceneID="x8A-2d-t3X">
@@ -241,7 +252,7 @@
                                         <rect key="frame" x="0.0" y="92" width="375" height="119"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dRJ-Ei-86H" id="wlZ-Cs-nJ8">
-                                            <frame key="frameInset" width="375" height="118.5"/>
+                                            <frame key="frameInset" width="375" height="118"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ajD-wQ-1rb">
@@ -322,6 +333,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="kC2-1h-1fF" id="gyW-eY-JVv"/>
+                        <segue destination="YGg-u6-0ek" kind="presentation" identifier="profileSegue" id="3vp-UL-PKV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bJD-Oo-1Kp" userLabel="First Responder" sceneMemberID="firstResponder"/>
