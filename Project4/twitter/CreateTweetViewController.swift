@@ -16,14 +16,22 @@ class CreateTweetViewController: UIViewController {
     var replyToId: String?
     var replyToUsername: String?
     
+    @IBOutlet weak var profileImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tweetTextView.layer.cornerRadius = 5
+        tweetTextView.clipsToBounds = true
         tweetTextView.layer.borderColor = UIColor.lightGray.cgColor
         tweetTextView.layer.borderWidth = 1
         
         // Prevent text edit from starting in the middle of the text view.
         self.automaticallyAdjustsScrollViewInsets = false
+        
+        profileImageView.setImageWith((User.currentUser?.profileUrl)!)
+        profileImageView.layer.cornerRadius = 5
+        profileImageView.clipsToBounds = true
         
         if let username = replyToUsername {
             tweetTextView.text = "@\(username) "

@@ -115,13 +115,27 @@
                                             <frame key="frameInset" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Menu item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDL-1u-Dfz">
+                                                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8GJ-G8-AXm">
                                                     <frame key="frameInset" minX="22" minY="11" width="81" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="S5e-7C-Ou8">
+                                                    <frame key="frameInset" minX="22" minY="20" width="81" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TgD-I6-K1d">
+                                                            <frame key="frameInset" width="81" height="21"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Menu item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDL-1u-Dfz">
+                                                                    <frame key="frameInset" width="81" height="21"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -199,7 +213,7 @@
                                     </label>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VIq-Jx-9J5">
                                         <frame key="frameInset" minY="323" width="375" height="280"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -397,35 +411,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DW9-Yg-Iwq">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5zR-dB-wFn">
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DW9-Yg-Iwq">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="J4a-XY-XxK"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="NXb-CY-llP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jMJ-ao-7Se">
+                                        <color key="backgroundColor" red="0.34916396080000001" green="0.74721582350000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="cCa-ft-LtY"/>
+                                            <constraint firstAttribute="height" constant="40" id="qB8-UE-41d"/>
+                                        </constraints>
+                                        <state key="normal" title="Tweet">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onTweetButton:" destination="HDg-hi-sVo" eventType="touchUpInside" id="Nq6-3D-RIQ"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2om-Cf-ya7">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="DAL-Jv-zBF"/>
+                                            <constraint firstAttribute="height" constant="60" id="quz-bw-9SF"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="J4a-XY-XxK"/>
+                                    <constraint firstItem="2om-Cf-ya7" firstAttribute="top" secondItem="5zR-dB-wFn" secondAttribute="top" constant="12" id="3EU-eG-LyA"/>
+                                    <constraint firstAttribute="trailing" secondItem="DW9-Yg-Iwq" secondAttribute="trailing" constant="12" id="4j1-yo-svu"/>
+                                    <constraint firstItem="2om-Cf-ya7" firstAttribute="leading" secondItem="5zR-dB-wFn" secondAttribute="leading" constant="12" id="9aW-Wk-zdA"/>
+                                    <constraint firstItem="jMJ-ao-7Se" firstAttribute="top" secondItem="DW9-Yg-Iwq" secondAttribute="bottom" constant="12" id="D5x-Mc-rcK"/>
+                                    <constraint firstItem="DW9-Yg-Iwq" firstAttribute="top" secondItem="2om-Cf-ya7" secondAttribute="bottom" constant="12" id="ISw-Vg-4Vd"/>
+                                    <constraint firstItem="DW9-Yg-Iwq" firstAttribute="leading" secondItem="5zR-dB-wFn" secondAttribute="leading" constant="12" id="QEL-wP-o7X"/>
+                                    <constraint firstAttribute="trailing" secondItem="jMJ-ao-7Se" secondAttribute="trailing" constant="12" id="rrK-Yi-dh2"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jMJ-ao-7Se">
-                                <color key="backgroundColor" red="0.34916396080000001" green="0.74721582350000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="cCa-ft-LtY"/>
-                                    <constraint firstAttribute="height" constant="40" id="qB8-UE-41d"/>
-                                </constraints>
-                                <state key="normal" title="Tweet">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onTweetButton:" destination="HDg-hi-sVo" eventType="touchUpInside" id="Nq6-3D-RIQ"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DW9-Yg-Iwq" firstAttribute="leading" secondItem="i06-bn-Sjc" secondAttribute="leadingMargin" id="4LA-aj-nFM"/>
-                            <constraint firstItem="DW9-Yg-Iwq" firstAttribute="trailing" secondItem="i06-bn-Sjc" secondAttribute="trailingMargin" id="7j4-27-LeC"/>
-                            <constraint firstItem="DW9-Yg-Iwq" firstAttribute="top" secondItem="i06-bn-Sjc" secondAttribute="topMargin" constant="72" id="DuN-tU-v6E"/>
-                            <constraint firstAttribute="trailing" secondItem="jMJ-ao-7Se" secondAttribute="trailing" constant="16" id="Fcl-vm-mF8"/>
-                            <constraint firstItem="jMJ-ao-7Se" firstAttribute="top" secondItem="DW9-Yg-Iwq" secondAttribute="bottom" constant="8" id="TJq-iM-nJq"/>
+                            <constraint firstAttribute="trailing" secondItem="5zR-dB-wFn" secondAttribute="trailing" id="1J3-8z-NWA"/>
+                            <constraint firstItem="e5I-1L-gKQ" firstAttribute="top" secondItem="5zR-dB-wFn" secondAttribute="bottom" id="FlA-gL-D53"/>
+                            <constraint firstItem="5zR-dB-wFn" firstAttribute="leading" secondItem="i06-bn-Sjc" secondAttribute="leading" id="FnK-sS-j9z"/>
+                            <constraint firstItem="5zR-dB-wFn" firstAttribute="top" secondItem="JmO-7x-yzK" secondAttribute="bottom" id="pcF-OQ-pqI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Tweet" id="d1X-41-vNq">
@@ -436,6 +470,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="profileImageView" destination="2om-Cf-ya7" id="s5B-Pn-TkZ"/>
                         <outlet property="tweetButton" destination="jMJ-ao-7Se" id="l4d-Xt-f1Z"/>
                         <outlet property="tweetTextView" destination="DW9-Yg-Iwq" id="ZG2-FF-h43"/>
                     </connections>
