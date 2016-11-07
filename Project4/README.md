@@ -1,6 +1,6 @@
 # Project 4 - *Twitter Redux*
 
-Time spent: **11** hours spent in total
+Time spent: **12** hours spent in total
 
 ## User Stories
 
@@ -31,25 +31,26 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] Added user timeline in profile 
+- [x] Added reply, retweet and favorite icons to timelines
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-  1.
-  2.
+  1. What is the best way for us to structure apps such that we reuse views? Is there a best practice for that?
+  2. Best practices for structuring APIs and views.
 
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='twitter-redux.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+I came accross some trouble while trying to figure out how to properly get user data from a tap event on the profile image in a tweet. I also had some trouble with figuring hout how to reuse view controllers. I had trouble understanding some of the optional requirements so I am opting to make the app look as much like the current iteration of Twitter as possible.
 
 ## License
 

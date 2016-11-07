@@ -32,14 +32,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.estimatedRowHeight = 120
         
         // Check if we actually need new tweets, otherwise we hit the rate limit REALLY quickly.
-        if self.tweets == nil {
-            TwitterClient.sharedInstance?.getTimeline(type: endpoint!, parameters: nil, success: { (tweets: [Tweet]) in
-                print("setting \((self.endpoint)!) tweets")
-                self.tweets = tweets
-                self.tableView.reloadData()
-            }, failure: { (error: Error) in
-                print("error loading timeline: \(error.localizedDescription)")
-            })
+        if tweets == nil {
+            setTimeline()
         }
     }
 
@@ -66,19 +60,23 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell!
     }
     
+    func setTimeline() {
+        TwitterClient.sharedInstance?.getTimeline(type: endpoint!, parameters: nil, success: { (tweets: [Tweet]) in
+            print("setting \((self.endpoint)!) tweets")
+                self.tweets = tweets
+                self.tableView.reloadData()
+            }, failure: { (error: Error) in
+                print("error loading timeline: \(error.localizedDescription)")
+        })
+    }
+    
     func didTapProfileImage(sender: UITapGestureRecognizer) {
 
         self.performSegue(withIdentifier: "profileSegue", sender: sender)
     }
     
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
-        TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) in
-            self.tweets = tweets
-            self.tableView.reloadData()
-            self.refreshControl.endRefreshing()
-        }, failure: { (error: Error) in
-            print("error in refreshControlAction: \(error.localizedDescription)")
-        })
+        setTimeline()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -104,20 +102,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-
-    
     @IBAction func onLogoutButton(_ sender: AnyObject) {
         TwitterClient.sharedInstance?.logout()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
